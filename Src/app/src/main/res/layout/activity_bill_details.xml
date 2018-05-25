@@ -99,6 +99,20 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
+            <Button
+                an:id="@+id/buttonSendMsg"
+                an:layout_width="wrap_content"
+                an:layout_height="wrap_content"
+                an:layout_marginEnd="8dp"
+                an:layout_marginStart="8dp"
+                an:layout_marginTop="448dp"
+                an:text="Send Message"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
         </android.support.constraint.ConstraintLayout>
 
     </ScrollView>
