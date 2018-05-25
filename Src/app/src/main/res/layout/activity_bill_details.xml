@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:an="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    an:layout_width="match_parent"
+    an:layout_height="match_parent"
+    an:fitsSystemWindows="true"
+    tools:context="com.doesnothaveadomain.splitunitcost.BillDetailsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        an:id="@+id/app_bar"
+        an:layout_width="match_parent"
+        an:layout_height="@dimen/app_bar_height"
+        an:fitsSystemWindows="true"
+        an:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            an:id="@+id/toolbar_layout"
+            an:layout_width="match_parent"
+            an:layout_height="match_parent"
+            an:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
+
+            <android.support.v7.widget.Toolbar
+                an:id="@+id/toolbar"
+                an:layout_width="match_parent"
+                an:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        an:layout_width="match_parent"
+        an:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            an:layout_width="match_parent"
+            an:layout_height="wrap_content">
+
+            <TextView
+                an:id="@+id/textView3"
+                an:layout_width="wrap_content"
+                an:layout_height="wrap_content"
+                an:layout_marginLeft="16dp"
+                an:layout_marginTop="221dp"
+                an:text="Bill of 1st Meter (+VAT)"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                an:id="@+id/textView4"
+                an:layout_width="wrap_content"
+                an:layout_height="wrap_content"
+                an:layout_marginLeft="20dp"
+                an:layout_marginTop="284dp"
+                an:text="Bill of 2nd Meter (+VAT)"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
+            <TextView
+                an:id="@+id/textViewBillOf1stMeter"
+                an:layout_width="wrap_content"
+                an:layout_height="wrap_content"
+                an:layout_marginLeft="190dp"
+                an:layout_marginStart="190dp"
+                an:layout_marginTop="221dp"
+                an:width="120dp"
+                an:text="-"
+                an:textIsSelectable="true"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                an:id="@+id/textViewBillOf2ndMeter"
+                an:layout_width="wrap_content"
+                an:layout_height="wrap_content"
+                an:layout_marginLeft="172dp"
+                an:layout_marginTop="284dp"
+                an:width="120dp"
+                an:text="-"
+                an:textIsSelectable="true"
+                app:layout_constraintLeft_toLeftOf="@+id/textView4"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                an:id="@+id/textView6"
+                an:layout_width="wrap_content"
+                an:layout_height="wrap_content"
+                an:layout_marginLeft="20dp"
+                an:layout_marginTop="360dp"
+                an:width="150dp"
+                an:text="Total Charge (without VAT &amp; Demand charge)"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

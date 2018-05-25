@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SplitUnitCost.iml" filepath="$PROJECT_DIR$/SplitUnitCost.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Src.iml" filepath="$PROJECT_DIR$/Src.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

@@ -36,47 +36,26 @@
         an:layout_marginTop="8dp"
         an:text="Calculate"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.456"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.306"/>
-
-    <TextView
-        an:id="@+id/textView3"
-        an:layout_width="wrap_content"
-        an:layout_height="wrap_content"
-        an:layout_marginLeft="16dp"
-        an:layout_marginTop="221dp"
-        an:text="Bill of 1st Meter (+VAT)"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
-        an:id="@+id/textView4"
-        an:layout_width="wrap_content"
-        an:layout_height="wrap_content"
-        an:layout_marginLeft="20dp"
-        an:layout_marginTop="284dp"
-        an:text="Bill of 2nd Meter (+VAT)"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintVertical_bias="0.608"/>
 
     <EditText
-        an:id="@+id/editTextTotalUsage"
-        an:layout_width="wrap_content"
+        an:id="@+id/editTextTotalUsageInput"
+        an:layout_width="107dp"
         an:layout_height="wrap_content"
-        an:layout_marginEnd="16dp"
         an:layout_marginRight="16dp"
+        an:layout_marginTop="29dp"
         an:ems="10"
         an:inputType="numberDecimal"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        an:layout_marginTop="29dp"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
-        an:id="@+id/editTextUsageOf2ndMeter"
-        an:layout_width="wrap_content"
+        an:id="@+id/editTextSubmeterUnitCurrentInput"
+        an:layout_width="87dp"
         an:layout_height="wrap_content"
         an:layout_marginRight="16dp"
         an:layout_marginTop="87dp"
@@ -85,51 +64,68 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <TextView
-        an:id="@+id/textViewBillOf1stMeter"
-        an:layout_width="wrap_content"
+    <EditText
+        an:id="@+id/editTextSubmeterBillPrevInput"
+        an:layout_width="88dp"
         an:layout_height="wrap_content"
-        an:layout_marginStart="190dp"
-        an:layout_marginLeft="190dp"
-        an:layout_marginTop="221dp"
-        an:width="120dp"
-        an:text="-"
-        an:textIsSelectable="true"
-        app:layout_constraintLeft_toLeftOf="parent"
+        an:layout_marginEnd="12dp"
+        an:layout_marginTop="87dp"
+        an:ems="10"
+        an:inputType="numberDecimal"
+        app:layout_constraintEnd_toStartOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        an:id="@+id/textViewBillOf2ndMeter"
+        an:id="@+id/textView5"
         an:layout_width="wrap_content"
         an:layout_height="wrap_content"
-        an:layout_marginLeft="172dp"
-        an:layout_marginTop="284dp"
-        an:width="120dp"
+        an:layout_marginEnd="12dp"
+        an:layout_marginTop="96dp"
         an:text="-"
-        an:textIsSelectable="true"
-        app:layout_constraintLeft_toLeftOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/editTextSubmeterUnitCurrentInput"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        an:id="@+id/textView6"
+        an:id="@+id/textView7"
         an:layout_width="wrap_content"
         an:layout_height="wrap_content"
-        an:layout_marginLeft="20dp"
-        an:layout_marginTop="360dp"
-        an:width="150dp"
-        an:text="Total Charge (without VAT &amp; Demand charge)"
+        an:layout_marginLeft="16dp"
+        an:layout_marginTop="164dp"
+        an:text="Water"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <EditText
+        an:id="@+id/editTextWaterBillInput"
+        an:layout_width="106dp"
+        an:layout_height="wrap_content"
+        an:layout_marginRight="16dp"
+        an:layout_marginTop="144dp"
+        an:ems="10"
+        an:inputType="number"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <TextView
-        an:id="@+id/txtTotalCharge"
+        an:id="@+id/textView8"
         an:layout_width="wrap_content"
         an:layout_height="wrap_content"
-        an:layout_marginLeft="188dp"
-        an:layout_marginTop="364dp"
-        an:text="-"
-        an:textIsSelectable="true"
+        an:layout_marginLeft="16dp"
+        an:layout_marginTop="216dp"
+        an:text="Gas"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        an:id="@+id/editTextGasInput"
+        an:layout_width="105dp"
+        an:layout_height="wrap_content"
+        an:layout_marginRight="16dp"
+        an:layout_marginTop="204dp"
+        an:ems="10"
+        an:inputType="number"
+        an:text="800"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Split Unit Cost</string>
+    <string name="app_name">Utility Bills</string>
+    <string name="title_activity_bill_details">BillDetailsActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>
