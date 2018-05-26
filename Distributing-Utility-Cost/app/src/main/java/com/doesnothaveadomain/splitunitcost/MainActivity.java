@@ -3,6 +3,7 @@ package com.doesnothaveadomain.splitunitcost;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,9 @@ public class MainActivity extends AppCompatActivity
 		setContentView(R.layout.activity_main);
 		
 		AttachCalculateButtonClickEvent();
+		
+		InputMethodManager imm = (InputMethodManager)MainActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.showSoftInput(null, 0);
 	}
 	
 	protected void EmptyResultantTextViews()
@@ -44,6 +48,8 @@ public class MainActivity extends AppCompatActivity
 				// hides the keyboard
 				InputMethodManager imm = (InputMethodManager)MainActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
 				imm.hideSoftInputFromWindow(MainActivity.this.getCurrentFocus().getWindowToken(), 0);
+				
+				Show();
 			}
 		});
 	}
@@ -79,6 +85,18 @@ public class MainActivity extends AppCompatActivity
 		clipboard.setPrimaryClip(clipDataObj);
 		
 		Toast.makeText(MainActivity.this, "2nd meter bill copied to clipboard", Toast.LENGTH_SHORT).show();
+	
+		
+		sendMessage();
+	}
+	
+	public void sendMessage()
+	{
+		Intent intent = new Intent(this, BillDetailsActivity.class);
+		
+		String message = "";
+		intent.putExtra("BillDetailsActivity", message);
+		startActivity(intent);
 	}
 	
 	double calc(double unitFrom, double unitTo, double totalUsage)

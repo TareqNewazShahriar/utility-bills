@@ -16,54 +16,46 @@
         an:layout_marginTop="40dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
-        an:id="@+id/textView2"
-        an:layout_width="wrap_content"
-        an:layout_height="wrap_content"
-        an:layout_marginLeft="16dp"
-        an:layout_marginTop="99dp"
-        an:text="Usage of 2nd Meter"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <Button
-        an:id="@+id/buttonCalculate"
-        an:layout_width="158dp"
-        an:layout_height="wrap_content"
-        an:layout_marginBottom="8dp"
-        an:layout_marginLeft="18dp"
-        an:layout_marginTop="8dp"
-        an:text="Calculate"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.456"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.608"/>
-
     <EditText
         an:id="@+id/editTextTotalUsageInput"
         an:layout_width="107dp"
         an:layout_height="wrap_content"
-        an:layout_marginRight="16dp"
+        an:layout_marginEnd="16dp"
         an:layout_marginTop="29dp"
         an:ems="10"
         an:inputType="numberDecimal"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+
+    <TextView
+        an:id="@+id/textView2"
+        an:layout_width="wrap_content"
+        an:layout_height="wrap_content"
+        an:layout_marginStart="16dp"
+        an:layout_marginTop="99dp"
+        an:text="Usage of 2nd Meter"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
     <EditText
         an:id="@+id/editTextSubmeterUnitCurrentInput"
         an:layout_width="87dp"
         an:layout_height="wrap_content"
-        an:layout_marginRight="16dp"
+        an:layout_marginEnd="16dp"
         an:layout_marginTop="87dp"
         an:ems="10"
         an:inputType="numberDecimal"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-
+    <TextView
+        an:id="@+id/textView5"
+        an:layout_width="wrap_content"
+        an:layout_height="wrap_content"
+        an:layout_marginEnd="12dp"
+        an:layout_marginTop="96dp"
+        an:text="-"
+        app:layout_constraintEnd_toStartOf="@+id/editTextSubmeterUnitCurrentInput"
+        app:layout_constraintTop_toTopOf="parent"/>
     <EditText
         an:id="@+id/editTextSubmeterBillPrevInput"
         an:layout_width="88dp"
@@ -76,25 +68,14 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        an:id="@+id/textView5"
-        an:layout_width="wrap_content"
-        an:layout_height="wrap_content"
-        an:layout_marginEnd="12dp"
-        an:layout_marginTop="96dp"
-        an:text="-"
-        app:layout_constraintEnd_toStartOf="@+id/editTextSubmeterUnitCurrentInput"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
         an:id="@+id/textView7"
         an:layout_width="wrap_content"
         an:layout_height="wrap_content"
-        an:layout_marginLeft="16dp"
+        an:layout_marginStart="16dp"
         an:layout_marginTop="164dp"
         an:text="Water"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-
     <EditText
         an:id="@+id/editTextWaterBillInput"
         an:layout_width="106dp"
@@ -110,22 +91,36 @@
         an:id="@+id/textView8"
         an:layout_width="wrap_content"
         an:layout_height="wrap_content"
-        an:layout_marginLeft="16dp"
+        an:layout_marginStart="16dp"
         an:layout_marginTop="216dp"
         an:text="Gas"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-
     <EditText
         an:id="@+id/editTextGasInput"
         an:layout_width="105dp"
         an:layout_height="wrap_content"
-        an:layout_marginRight="16dp"
+        an:layout_marginEnd="16dp"
         an:layout_marginTop="204dp"
         an:ems="10"
         an:inputType="number"
         an:text="800"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        an:id="@+id/buttonCalculate"
+        an:layout_width="158dp"
+        an:layout_height="wrap_content"
+        an:layout_marginBottom="8dp"
+        an:layout_marginStart="18dp"
+        an:layout_marginTop="8dp"
+        an:text="Calculate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.608"/>
 
 </android.support.constraint.ConstraintLayout>
