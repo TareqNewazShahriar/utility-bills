@@ -46,8 +46,8 @@ public class BillDetailsActivity extends AppCompatActivity
 	{
 		if(checkPermissions())
 		{
-			String msg = "This is a test message automatically sent from .\n";
-			String phoneNum = "01557452001";
+			String msg = "This test message automatically sent by the app\n'Distributing Utility Cost'.";
+			String phoneNum = "+8801558960472";
 			sendSms(phoneNum, msg);
 		}
 	}

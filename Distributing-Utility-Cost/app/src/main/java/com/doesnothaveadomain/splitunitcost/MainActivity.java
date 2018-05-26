@@ -2,6 +2,7 @@ package com.doesnothaveadomain.splitunitcost;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -51,12 +52,18 @@ public class MainActivity extends AppCompatActivity
 	
 	protected void Show()
 	{
-		EditText txtTotalUsage = (EditText) findViewById(R.id.editTextTotalUsageInput);
-		EditText txtSubmeterUnitPrev = (EditText) findViewById(R.id.editTextSubmeterBillPrevInput);
-		EditText txtSubmeterUnitCurrent = (EditText) findViewById(R.id.editTextSubmeterUnitCurrentInput);
+		EditText txtTotalUsage = findViewById(R.id.editTextTotalUsageInput);
+		EditText txtSubmeterUnitPrev = findViewById(R.id.editTextSubmeterBillPrevInput);
+		EditText txtSubmeterUnitCurrent = findViewById(R.id.editTextSubmeterUnitCurrentInput);
+		EditText txtWaterBillInput = findViewById(R.id.editTextWaterBillInput);
+		EditText txtGasInput = findViewById(R.id.editTextGasInput);
 		
 		double totalUsage, totalUsageOf2ndMeter,
 				charge1, charge2, totalCharge, vatOfCharge1, vatOfCharge2;
+		int waterBill, doubleStoveGasBill;
+		
+		waterBill = Integer.parseInt(txtWaterBillInput.getText().toString());
+		doubleStoveGasBill = Integer.parseInt(txtGasInput.getText().toString());
 		
 		totalUsage = Double.parseDouble(txtTotalUsage.getText().toString());
 		totalUsageOf2ndMeter = Double.parseDouble(txtSubmeterUnitCurrent.getText().toString()) - Double.parseDouble(txtSubmeterUnitPrev.getText().toString());;
@@ -70,15 +77,21 @@ public class MainActivity extends AppCompatActivity
 		charge1 = charge1 + vatOfCharge1;
 		charge2 = charge2 + vatOfCharge2;
 		
-		sendMessage();
+		sendToDetailsView(totalUsage, totalUsageOf2ndMeter, charge1, charge2, waterBill, doubleStoveGasBill);
 	}
 	
-	public void sendMessage()
+	@NonNull
+	private void sendToDetailsView(double totalUsage, double totalUsageOf2ndMeter, double charge1, double charge2, int waterBill, int gasBill)
 	{
 		Intent intent = new Intent(this, BillDetailsActivity.class);
 		
-		String message = "sdfsdf";
-		intent.putExtra("BillDetailsActivity", message);
+		intent.putExtra("totalUsage", totalUsage);
+		intent.putExtra("totalUsageOf2ndMeter", totalUsageOf2ndMeter);
+		intent.putExtra("charge1", charge1);
+		intent.putExtra("charge2", charge2);
+		intent.putExtra("waterBill", waterBill);
+		intent.putExtra("gasBill", gasBill);
+		
 		startActivity(intent);
 	}
 	
