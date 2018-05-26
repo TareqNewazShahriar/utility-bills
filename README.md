@@ -1,2 +1,2 @@
-# Utility Bills
-This is an Android app is used to calculate monthly utility bills (electricity, gas, water) and texts bills to the payers.
+# Distribute Utility Costs
+An Android app to calculate and then SMS costs of monthly utility bills (electricity, gas, water) to the building owners.
