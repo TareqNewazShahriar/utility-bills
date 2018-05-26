@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity
 	{
 		Intent intent = new Intent(this, BillDetailsActivity.class);
 		
-		String message = "";
+		String message = "sdfsdf";
 		intent.putExtra("BillDetailsActivity", message);
 		startActivity(intent);
 	}

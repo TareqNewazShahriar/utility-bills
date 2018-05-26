@@ -1,13 +1,8 @@
 package com.doesnothaveadomain.splitunitcost;
 
 import android.Manifest;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -15,15 +10,12 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.telephony.SmsManager;
-import java.util.Locale;
 
 public class BillDetailsActivity extends AppCompatActivity
 {
-	private static final int PERMISSION_REQUEST_CODE = 1;
+	private static final int SMS_PERMISSION_REQUEST_ID = 1;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -35,24 +27,27 @@ public class BillDetailsActivity extends AppCompatActivity
 		
 		
 		
-		Button buttonSendMessage = null; // findViewById(R.id.buttonSendMsg);
+		Button buttonSendMessage = findViewById(R.id.buttonSendMsg);
 		buttonSendMessage.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
-			public void onClick(View view) {
+			public void onClick(View view)
+			{
 				String sms = "sdfsdf";
 				String phoneNum = "013456466546";
-				if(!TextUtils.isEmpty(sms) && !TextUtils.isEmpty(phoneNum)) {
-					if(checkPermission()) {
-
-//Get the default SmsManager//
-						
+				
+				if(!TextUtils.isEmpty(sms) && !TextUtils.isEmpty(phoneNum))
+				{
+					if(checkPermission())
+					{
+						//Get the default SmsManager//
 						SmsManager smsManager = SmsManager.getDefault();
-
-//Send the SMS//
 						
+						//Send the SMS//
 						smsManager.sendTextMessage(phoneNum, null, sms, null, null);
-					}else {
+					}
+					else
+					{
 						Toast.makeText(BillDetailsActivity.this, "Permission denied", Toast.LENGTH_SHORT).show();
 					}
 				}
@@ -114,19 +109,20 @@ public class BillDetailsActivity extends AppCompatActivity
 		if (result == PackageManager.PERMISSION_GRANTED) {
 			return true;
 		} else {
+			requestPermission();
 			return false;
 		}
 	}
 	
 	private void requestPermission() {
-		ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, PERMISSION_REQUEST_CODE);
+		ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, SMS_PERMISSION_REQUEST_ID);
 		
 	}
 	
 	@Override
 	public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
 		switch (requestCode) {
-			case PERMISSION_REQUEST_CODE:
+			case SMS_PERMISSION_REQUEST_ID:
 				if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 					
 					Toast.makeText(BillDetailsActivity.this,
