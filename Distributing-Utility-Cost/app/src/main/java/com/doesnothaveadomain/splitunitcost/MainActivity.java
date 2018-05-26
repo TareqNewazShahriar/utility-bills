@@ -1,7 +1,5 @@
 package com.doesnothaveadomain.splitunitcost;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -11,12 +9,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
 {
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -74,18 +69,6 @@ public class MainActivity extends AppCompatActivity
 		vatOfCharge2 = charge2 * 5 / 100;
 		charge1 = charge1 + vatOfCharge1;
 		charge2 = charge2 + vatOfCharge2;
-		
-		// copy 2nd meter bill to clipboard
-		ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-		//clipboard.setText(String.format(Locale.ENGLISH, "%.02f", charge2));
-		
-		
-		ClipData clipDataObj = ClipData.newPlainText("this is clipdata label",
-				String.format(Locale.ENGLISH, "%.02f", charge2));
-		clipboard.setPrimaryClip(clipDataObj);
-		
-		Toast.makeText(MainActivity.this, "2nd meter bill copied to clipboard", Toast.LENGTH_SHORT).show();
-	
 		
 		sendMessage();
 	}
