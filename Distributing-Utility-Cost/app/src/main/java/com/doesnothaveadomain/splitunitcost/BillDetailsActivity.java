@@ -1,6 +1,12 @@
 package com.doesnothaveadomain.splitunitcost;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -15,7 +21,7 @@ import android.telephony.SmsManager;
 
 public class BillDetailsActivity extends AppCompatActivity
 {
-	private static final int SMS_PERMISSION_REQUEST_ID = 1;
+	private static final int PERMISSION_REQUEST_ID = 1;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -25,34 +31,108 @@ public class BillDetailsActivity extends AppCompatActivity
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 		
-		
-		
 		Button buttonSendMessage = findViewById(R.id.buttonSendMsg);
-		buttonSendMessage.setOnClickListener(new View.OnClickListener() {
-			
+		buttonSendMessage.setOnClickListener(new View.OnClickListener()
+		{
 			@Override
 			public void onClick(View view)
 			{
-				String sms = "sdfsdf";
-				String phoneNum = "013456466546";
-				
-				if(!TextUtils.isEmpty(sms) && !TextUtils.isEmpty(phoneNum))
-				{
-					if(checkPermission())
-					{
-						//Get the default SmsManager//
-						SmsManager smsManager = SmsManager.getDefault();
-						
-						//Send the SMS//
-						smsManager.sendTextMessage(phoneNum, null, sms, null, null);
-					}
-					else
-					{
-						Toast.makeText(BillDetailsActivity.this, "Permission denied", Toast.LENGTH_SHORT).show();
-					}
-				}
+				SmsQueue();
 			}
 		});
+	}
+	
+	private void SmsQueue()
+	{
+		if(checkPermissions())
+		{
+			String msg = "This is a test message automatically sent from .\n";
+			String phoneNum = "01557452001";
+			sendSms(phoneNum, msg);
+		}
+	}
+	
+	private void sendSms(String phoneNum, String msg)
+	{
+		if(!TextUtils.isEmpty(msg) && !TextUtils.isEmpty(phoneNum))
+		{
+			//Get the default SmsManager//
+			SmsManager smsManager = SmsManager.getDefault();
+			
+			//Send the SMS//
+			smsManager.sendTextMessage(phoneNum, null, msg, null, null);
+		}
+	}
+	
+	private void sendSms2(String phoneNumber, String message)
+	{
+		PendingIntent pi = PendingIntent.getActivity(this, 0,
+				new Intent(this, BillDetailsActivity.class), 0);
+		SmsManager sms = SmsManager.getDefault();
+		sms.sendTextMessage(phoneNumber, null, message, pi, null);
+	}
+	
+	private void sendSms3(String phoneNumber, String message)
+	{
+		String SENT = "SMS_SENT";
+		String DELIVERED = "SMS_DELIVERED";
+		
+		PendingIntent sentPI = PendingIntent.getBroadcast(this, 0,
+				new Intent(SENT), 0);
+		
+		PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0,
+				new Intent(DELIVERED), 0);
+		
+		//---when the SMS has been sent---
+		registerReceiver(new BroadcastReceiver(){
+			@Override
+			public void onReceive(Context arg0, Intent arg1) {
+				switch (getResultCode())
+				{
+					case Activity.RESULT_OK:
+						Toast.makeText(getBaseContext(), "SMS sent",
+								Toast.LENGTH_SHORT).show();
+						break;
+					case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
+						Toast.makeText(getBaseContext(), "Generic failure",
+								Toast.LENGTH_SHORT).show();
+						break;
+					case SmsManager.RESULT_ERROR_NO_SERVICE:
+						Toast.makeText(getBaseContext(), "No service",
+								Toast.LENGTH_SHORT).show();
+						break;
+					case SmsManager.RESULT_ERROR_NULL_PDU:
+						Toast.makeText(getBaseContext(), "Null PDU",
+								Toast.LENGTH_SHORT).show();
+						break;
+					case SmsManager.RESULT_ERROR_RADIO_OFF:
+						Toast.makeText(getBaseContext(), "Radio off",
+								Toast.LENGTH_SHORT).show();
+						break;
+				}
+			}
+		}, new IntentFilter(SENT));
+		
+		//---when the SMS has been delivered---
+		registerReceiver(new BroadcastReceiver(){
+			@Override
+			public void onReceive(Context arg0, Intent arg1) {
+				switch (getResultCode())
+				{
+					case Activity.RESULT_OK:
+						Toast.makeText(getBaseContext(), "SMS delivered",
+								Toast.LENGTH_SHORT).show();
+						break;
+					case Activity.RESULT_CANCELED:
+						Toast.makeText(getBaseContext(), "SMS not delivered",
+								Toast.LENGTH_SHORT).show();
+						break;
+				}
+			}
+		}, new IntentFilter(DELIVERED));
+		
+		SmsManager sms = SmsManager.getDefault();
+		sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);
 	}
 	
 	/*protected void Show()
@@ -104,35 +184,44 @@ public class BillDetailsActivity extends AppCompatActivity
 	}*/
 	
 	
-	private boolean checkPermission() {
-		int result = ContextCompat.checkSelfPermission(BillDetailsActivity.this, Manifest.permission.SEND_SMS);
-		if (result == PackageManager.PERMISSION_GRANTED) {
-			return true;
-		} else {
-			requestPermission();
-			return false;
+	private boolean checkPermissions()
+	{
+		boolean ok = true;
+		for (String item: new String[]{ Manifest.permission.SEND_SMS, Manifest.permission.READ_PHONE_STATE })
+		{
+			int result = ContextCompat.checkSelfPermission(BillDetailsActivity.this, item);
+			
+			if (result == PackageManager.PERMISSION_GRANTED)
+				ok = ok & true;
+			else
+			{
+				requestPermission(item);
+				ok = ok & false;
+			}
 		}
+		
+		return ok;
 	}
 	
-	private void requestPermission() {
-		ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, SMS_PERMISSION_REQUEST_ID);
-		
+	private void requestPermission(String permission)
+	{
+		ActivityCompat.requestPermissions(this, new String[]{ permission }, PERMISSION_REQUEST_ID);
 	}
 	
 	@Override
-	public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-		switch (requestCode) {
-			case SMS_PERMISSION_REQUEST_ID:
-				if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-					
-					Toast.makeText(BillDetailsActivity.this,
-							"Permission accepted", Toast.LENGTH_LONG).show();
-					
-				} else {
-					Toast.makeText(BillDetailsActivity.this,
-							"Permission denied", Toast.LENGTH_LONG).show();
-				}
-				break;
+	public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
+	{
+		if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+		{
+			Toast.makeText(BillDetailsActivity.this,
+					"Permission accepted", Toast.LENGTH_LONG).show();
+			SmsQueue();
 		}
+		else
+		{
+			Toast.makeText(BillDetailsActivity.this,
+					"Permission denied", Toast.LENGTH_LONG).show();
+		}
+		
 	}
 }
