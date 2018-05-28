@@ -7,4 +7,4 @@ An Android app to calculate and then SMS costs of monthly utility bills (electri
 
 <br/>
 
-*-Logo (and app icon) designed by [@zularizal](https://github.com/zularizal)*
+*-App icon designed by [@zularizal](https://github.com/zularizal)*
