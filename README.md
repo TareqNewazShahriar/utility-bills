@@ -3,7 +3,7 @@
 <img src="Logo/horizontal.png" width=20%>
 </h1>
 
-An Android app to calculate and distribute monthly utility bills (electricity, gas, water) costs to the multiple owners of a building. There electricity sub-meter to consider accroding to the electricity tariff plan. Finally it sends the separated costs through SMS.
+An Android app to calculate and distribute monthly utility bills (electricity, gas, water) costs to the multiple owners of a building. There is electricity sub-meter to consider accroding to unit tariff plan. And finally it sends the separated costs to the owners through SMS.
 
 <br/>
 
