@@ -1,4 +1,4 @@
-# Distributing Utility Cost
+# Utility Bills
 <h3>
 <img src="Logo/horizontal.png" width=20%>
 </h1>
