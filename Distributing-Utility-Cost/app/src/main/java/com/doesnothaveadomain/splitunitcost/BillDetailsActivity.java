@@ -256,7 +256,8 @@ public class BillDetailsActivity extends AppCompatActivity
 		
 		EditText editText = findViewById(id);
 		editText.setText(
-				 new DateFormatSymbols().getMonths()[c.get(Calendar.MONTH)]
+				"Utility bills - "
+				+ new DateFormatSymbols().getMonths()[c.get(Calendar.MONTH)]
 				+ ", "
 				+ c.get(Calendar.YEAR)
 				+ "----"
