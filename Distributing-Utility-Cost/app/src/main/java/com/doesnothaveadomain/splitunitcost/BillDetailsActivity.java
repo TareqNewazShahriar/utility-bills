@@ -73,7 +73,7 @@ public class BillDetailsActivity extends AppCompatActivity
 			}
 		});
 		
-		
+		ShowDetails();
 	}
 	
 	private void OpenSmsApp(String phoneNumber, String msg)
@@ -262,6 +262,7 @@ public class BillDetailsActivity extends AppCompatActivity
 				 new DateFormatSymbols().getMonths()[c.get(Calendar.MONTH)]
 				+ ", "
 				+ c.get(Calendar.YEAR)
+				+ "----"
 				+ System.lineSeparator()
 				+ "Electricity - "
 				+ String.format(Locale.ENGLISH, "%.0f", electricityBill)

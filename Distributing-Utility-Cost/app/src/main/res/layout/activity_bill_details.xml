@@ -42,8 +42,9 @@
             an:orientation="vertical"
             an:layout_width="match_parent"
             an:layout_height="wrap_content"
-            an:layout_marginLeft="16dp"
-            an:layout_marginTop="92dp">
+            an:layout_marginStart="10dp"
+            an:layout_marginEnd="10dp"
+            an:layout_marginTop="80dp">
 
             <LinearLayout
                 an:orientation="horizontal"

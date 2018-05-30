@@ -16,11 +16,9 @@
             an:id="@+id/textView"
             an:layout_width="wrap_content"
             an:layout_height="wrap_content"
-            an:layout_marginEnd="132dp"
             an:layout_marginLeft="16dp"
             an:layout_marginTop="28dp"
             an:text="Units of 1st Floor"
-            app:layout_constraintEnd_toStartOf="@+id/editTextUnitsOf1stFloor"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -75,11 +73,9 @@
             an:id="@+id/textView7"
             an:layout_width="wrap_content"
             an:layout_height="wrap_content"
-            an:layout_marginEnd="204dp"
             an:layout_marginLeft="28dp"
             an:layout_marginTop="32dp"
             an:text="Water"
-            app:layout_constraintEnd_toStartOf="@+id/editTextWaterBillInput"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView13"/>
 
@@ -99,11 +95,9 @@
             an:id="@+id/textView8"
             an:layout_width="wrap_content"
             an:layout_height="wrap_content"
-            an:layout_marginEnd="216dp"
             an:layout_marginLeft="28dp"
             an:layout_marginTop="36dp"
             an:text="Gas"
-            app:layout_constraintEnd_toStartOf="@+id/editTextGasInput"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7"/>
 
@@ -123,8 +117,9 @@
             an:id="@+id/buttonCalculate"
             an:layout_width="158dp"
             an:layout_height="wrap_content"
-            an:layout_marginTop="80dp"
+            an:layout_marginTop="32dp"
             an:text="Calculate"
+            app:layout_constraintHorizontal_bias="0.442"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextGasInput"/>
@@ -155,11 +150,9 @@
             an:id="@+id/textView12"
             an:layout_width="wrap_content"
             an:layout_height="wrap_content"
-            an:layout_marginEnd="76dp"
             an:layout_marginLeft="16dp"
             an:layout_marginTop="48dp"
             an:text="Electricity bill of 2nd Floor"
-            app:layout_constraintEnd_toStartOf="@+id/editTextElectricityBillOf2ndFloor"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView11"/>
 
@@ -167,11 +160,9 @@
             an:id="@+id/textView13"
             an:layout_width="wrap_content"
             an:layout_height="wrap_content"
-            an:layout_marginEnd="52dp"
             an:layout_marginLeft="16dp"
             an:layout_marginTop="48dp"
             an:text="Electricity bill of 4th+1st Floor"
-            app:layout_constraintEnd_toStartOf="@+id/editTextElectricityBillOf4thFloor"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView14"/>
 
@@ -179,11 +170,9 @@
             an:id="@+id/textView14"
             an:layout_width="wrap_content"
             an:layout_height="wrap_content"
-            an:layout_marginEnd="80dp"
             an:layout_marginLeft="16dp"
             an:layout_marginTop="48dp"
             an:text="Electricity bill of 3rd Floor"
-            app:layout_constraintEnd_toStartOf="@+id/editTextElectricityBillOf3rdFloor"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12"/>
 
@@ -227,11 +216,9 @@
             an:id="@+id/textView11"
             an:layout_width="wrap_content"
             an:layout_height="wrap_content"
-            an:layout_marginEnd="80dp"
             an:layout_marginLeft="16dp"
             an:layout_marginTop="36dp"
             an:text="Electricity Bill of 1st Floor"
-            app:layout_constraintEnd_toStartOf="@+id/editTextElectricityBillOf1stFloor"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextSubmeterUnitCurrentInput"/>
 
