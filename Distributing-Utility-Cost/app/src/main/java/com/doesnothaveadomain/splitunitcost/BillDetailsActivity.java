@@ -4,33 +4,35 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.telephony.SmsManager;
+
+import java.text.DateFormatSymbols;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class BillDetailsActivity extends AppCompatActivity
 {
 	private static final int PERMISSION_REQUEST_ID = 1;
-	private static final String PHoneOf2ndFloor = "+8801670868869";
-	private static final String PHoneOf3rdFloor = "+8801706889400";
-	private static final String PHoneOf4thFloor = "+8801631294839; +8801631348696";
+	private static final String PhoneOf2ndFloor = "+8801670868869";
+	private static final String PhoneOf3rdFloor = "+8801706889400";
+	private static final String PhoneOf4thFloor = "+8801631294839; +8801631348696";
 	
 	
 	@Override
@@ -38,24 +40,51 @@ public class BillDetailsActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_bill_details);
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 		
-		Button buttonSendMessage = findViewById(R.id.buttonMsgTo3rdFloor);
-		buttonSendMessage.setOnClickListener(new View.OnClickListener()
+		// attach click send msg event for 2nd floor
+		(findViewById(R.id.buttonMsgTo2ndFloor)).setOnClickListener(new View.OnClickListener()
 		{
 			@Override
 			public void onClick(View view)
 			{
-				Uri sms_uri = Uri.parse("smsto:+88016549869654");
-				Intent sms_intent = new Intent(Intent.ACTION_SENDTO, sms_uri);
-				sms_intent.putExtra("sms_body", "Good Morning ! how r U ?");
-				startActivity(sms_intent);
+				OpenSmsApp(PhoneOf2ndFloor, ((EditText)findViewById(R.id.editText2ndFloor)).getText().toString());
 			}
 		});
+		
+		// attach click send msg event for 3rd floor
+		(findViewById(R.id.buttonMsgTo3rdFloor)).setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				OpenSmsApp(PhoneOf3rdFloor, ((EditText)findViewById(R.id.editText3rdFloor)).getText().toString());
+			}
+		});
+		
+		// attach click send msg event for 4th floor
+		(findViewById(R.id.buttonMsgTo4thFloor)).setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				OpenSmsApp(PhoneOf4thFloor, ((EditText)findViewById(R.id.editText4thFloor)).getText().toString());
+			}
+		});
+		
+		
 	}
 	
-	private void SmsQueue()
+	private void OpenSmsApp(String phoneNumber, String msg)
+	{
+		Uri sms_uri = Uri.parse("smsto:" + phoneNumber);
+		Intent sms_intent = new Intent(Intent.ACTION_SENDTO, sms_uri);
+		sms_intent.putExtra("sms_body", msg);
+		startActivity(sms_intent);
+	}
+	
+	private void PrepareForMessaging()
 	{
 		if(checkPermissions())
 		{
@@ -148,42 +177,107 @@ public class BillDetailsActivity extends AppCompatActivity
 		sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);
 	}
 	
-	protected void Show()
+	protected void ShowDetails()
 	{
-		EditText txtTotalUsage = null;
-		EditText txtSubmeterUnitPrev = null;
-		EditText txtSubmeterUnitCurrent = null;
-		TextView txtBillOfFirstMeter = null;
-		TextView txtBillOfSecondMeter = null;
-		TextView txtTotalCharge = null;
+		// declare/initialize necessary variables
+		Intent intentView = getIntent();
 		
-		double totalUsage, totalUsageOf2ndMeter,
-				charge1, charge2, totalCharge, vatOfCharge1, vatOfCharge2;
+		TextView txtBillOfFirstMeter = findViewById(R.id.textViewBillOfFirstMeter);
+		TextView txtBillOfSecondMeter = findViewById(R.id.textViewBillOfSecondMeter);
+		TextView txtTotalCharge = findViewById(R.id.textViewTotalCharge);
 		
-		totalUsage = 0;
-		totalUsageOf2ndMeter = 0;
+		EditText editText1stFloor = findViewById(R.id.editText1stFloor);
+		EditText editText2ndFloor = findViewById(R.id.editText2ndFloor);
+		EditText editText3rdFloor = findViewById(R.id.editText3rdFloor);
+		EditText editText4thFloor = findViewById(R.id.editText4thFloor);
 		
-		charge1 = 0; // calc(1, totalUsage - totalUsageOf2ndMeter, totalUsage);
-		charge2 = 0; //calc(totalUsage - totalUsageOf2ndMeter + 1, totalUsage, totalUsage);
-		totalCharge= charge1 + charge2;
+		double unitsOf1stFloor, unitsOf1stFloorSubmeter,
+				chargeOf1stFloor, electricityChargeOf1stFloorSubmeter,
+				electricityBillOf1stFloor, electricityBillOf2ndFloor, electricityBillOf3rdFloor, electricityBillOf4thFloor,
+				totalRawChargeOf1stFloor, vatOfCharge1, vatOfCharge2,
+				motorBillPerOwner, waterBillPerFloor, gasBillSingleStove;
+		int waterBill, gasBillDoubleStove;
 		
-		vatOfCharge1 = charge1 * 5 / 100;
-		vatOfCharge2 = charge2 * 5 / 100;
-		charge1 = charge1 + vatOfCharge1;
-		charge2 = charge2 + vatOfCharge2;
+		// get values
+		unitsOf1stFloor = intentView.getDoubleExtra("unitsOf1stFloor", 0);
+		unitsOf1stFloorSubmeter = intentView.getDoubleExtra("submeterUnitsOf1stFloor", 0);
 		
-		txtBillOfFirstMeter.setText(String.format(Locale.ENGLISH, "%.02f", charge1)
-						+ " TK for Unit " + String.format(Locale.ENGLISH, "%.0f", totalUsage - totalUsageOf2ndMeter)
-						+ ". Late: " +  String.format(Locale.ENGLISH, "%.0f", (charge1+vatOfCharge1)) + "tk",
+		chargeOf1stFloor = intentView.getDoubleExtra("chargeOf1stFloor", 0);
+		electricityChargeOf1stFloorSubmeter = intentView.getDoubleExtra("chargeOf1stFloorSubmeter", 0);
+		
+		electricityBillOf1stFloor = intentView.getDoubleExtra("electricityBillOf1stFloor", 0);
+		electricityBillOf2ndFloor = intentView.getDoubleExtra("electricityBillOf2ndFloor", 0);
+		electricityBillOf3rdFloor = intentView.getDoubleExtra("electricityBillOf3rdFloor", 0);
+		electricityBillOf4thFloor = intentView.getDoubleExtra("electricityBillOf4thFloor", 0);
+		
+		waterBill = intentView.getIntExtra("waterBill", 0);
+		gasBillDoubleStove = intentView.getIntExtra("gasBill", 0);
+		
+		
+		
+		// calculations
+		totalRawChargeOf1stFloor= chargeOf1stFloor + electricityChargeOf1stFloorSubmeter;
+		vatOfCharge1 = chargeOf1stFloor * 5 / 100;
+		chargeOf1stFloor = chargeOf1stFloor + vatOfCharge1;
+		vatOfCharge2 = electricityChargeOf1stFloorSubmeter * 5 / 100;
+		electricityChargeOf1stFloorSubmeter = electricityChargeOf1stFloorSubmeter + vatOfCharge2;
+		
+		motorBillPerOwner = electricityChargeOf1stFloorSubmeter / 4;
+		waterBillPerFloor = waterBill / 5;
+		gasBillSingleStove = gasBillDoubleStove - 50;
+		
+		
+		// set to controls
+		txtBillOfFirstMeter.setText(String.format(Locale.ENGLISH, "%.02f", chargeOf1stFloor)
+						+ " TK for Unit "
+						+ String.format(Locale.ENGLISH, "%.0f", unitsOf1stFloor - unitsOf1stFloorSubmeter)
+						+ ". Late: "
+						+  String.format(Locale.ENGLISH, "%.0f", (chargeOf1stFloor+vatOfCharge1))
+						+ "tk",
 				TextView.BufferType.EDITABLE);
 		
-		txtBillOfSecondMeter.setText(String.format(Locale.ENGLISH, "%.02f", charge2)
-						+ " TK for Unit " + totalUsageOf2ndMeter
-						+ ". Late: " + String.format(Locale.ENGLISH, "%.0f", charge2+vatOfCharge2) + "tk",
+		txtBillOfSecondMeter.setText(String.format(Locale.ENGLISH, "%.02f", electricityChargeOf1stFloorSubmeter)
+						+ " TK for Unit "
+						+ unitsOf1stFloorSubmeter
+						+ ". Late: "
+						+ String.format(Locale.ENGLISH, "%.0f", electricityChargeOf1stFloorSubmeter+vatOfCharge2)
+						+ "tk",
 				TextView.BufferType.EDITABLE);
 		
-		txtTotalCharge.setText(String.format(Locale.ENGLISH, "%.02f", totalCharge));
+		txtTotalCharge.setText(String.format(Locale.ENGLISH, "%.02f", totalRawChargeOf1stFloor));
 		
+		SetDetailsBill(R.id.editText1stFloor, electricityBillOf1stFloor-electricityChargeOf1stFloorSubmeter, motorBillPerOwner, waterBillPerFloor, gasBillDoubleStove);
+		SetDetailsBill(R.id.editText2ndFloor, electricityBillOf2ndFloor, motorBillPerOwner, waterBillPerFloor, gasBillDoubleStove);
+		SetDetailsBill(R.id.editText3rdFloor, electricityBillOf3rdFloor, motorBillPerOwner, waterBillPerFloor, gasBillDoubleStove);
+		SetDetailsBill(R.id.editText4thFloor, electricityBillOf4thFloor, motorBillPerOwner, waterBillPerFloor*2, gasBillDoubleStove+(gasBillSingleStove*2));
+	}
+	
+	private void SetDetailsBill(int id, double electricityBill, double motorBill, double waterBill, double gasBill)
+	{
+		Calendar c = Calendar.getInstance();
+		c.add(Calendar.MONTH, -1);
+		
+		EditText editText = findViewById(id);
+		editText.setText(
+				 new DateFormatSymbols().getMonths()[c.get(Calendar.MONTH)]
+				+ ", "
+				+ c.get(Calendar.YEAR)
+				+ System.lineSeparator()
+				+ "Electricity - "
+				+ String.format(Locale.ENGLISH, "%.0f", electricityBill)
+				+ System.lineSeparator()
+				+ "Motor - "
+				+ String.format(Locale.ENGLISH, "%.0f", motorBill)
+				+ System.lineSeparator()
+				+ "Water - "
+				+ String.format(Locale.ENGLISH, "%.0f", waterBill)
+				+ System.lineSeparator()
+				+ "Gas - "
+				+ String.format(Locale.ENGLISH, "%.0f", gasBill)
+				+ System.lineSeparator()
+				+ "Total:  "
+				+ String.format(Locale.ENGLISH, "%.0f", electricityBill + motorBill + waterBill + gasBill)
+			);
 	}
 	
 	
@@ -218,7 +312,7 @@ public class BillDetailsActivity extends AppCompatActivity
 		{
 			Toast.makeText(BillDetailsActivity.this,
 					"Permission accepted", Toast.LENGTH_LONG).show();
-			SmsQueue();
+			PrepareForMessaging();
 		}
 		else
 		{

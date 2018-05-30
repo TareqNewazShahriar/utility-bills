@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -42,42 +41,67 @@ public class MainActivity extends AppCompatActivity
 	
 	protected void Show()
 	{
-		EditText txtTotalUsage = findViewById(R.id.editTextTotalUsageInput);
+		EditText txtUnitsOf1stFloor = findViewById(R.id.editTextUnitsOf1stFloor);
 		EditText txtSubmeterUnitPrev = findViewById(R.id.editTextSubmeterBillPrevInput);
 		EditText txtSubmeterUnitCurrent = findViewById(R.id.editTextSubmeterUnitCurrentInput);
+		EditText txtElectricityBillOf1stFloor = findViewById(R.id.editTextElectricityBillOf1stFloor);
+		EditText txtElectricityBillOf2ndFloor = findViewById(R.id.editTextElectricityBillOf2ndFloor);
+		EditText txtElectricityBillOf3rdFloor = findViewById(R.id.editTextElectricityBillOf3rdFloor);
+		EditText txtElectricityBillOf4thFloor = findViewById(R.id.editTextElectricityBillOf4thFloor);
 		EditText txtWaterBillInput = findViewById(R.id.editTextWaterBillInput);
 		EditText txtGasInput = findViewById(R.id.editTextGasInput);
 		
-		double totalUsage, totalUsageOf2ndMeter,
-				charge1, charge2, totalCharge, vatOfCharge1, vatOfCharge2;
+		double unitsOf1stFloor, submeterUnitsOf1stFloor,
+				electricityBillOf1stFloor,
+				electricityBillOf2ndFloor, electricityBillOf3rdFloor, electricityBillOf4thFloor,
+				charge1, charge2, vatOfCharge1, vatOfCharge2;
 		int waterBill, doubleStoveGasBill;
+		
+		electricityBillOf1stFloor = Integer.parseInt(txtElectricityBillOf1stFloor.getText().toString());
+		electricityBillOf2ndFloor = Integer.parseInt(txtElectricityBillOf2ndFloor.getText().toString());
+		electricityBillOf3rdFloor = Integer.parseInt(txtElectricityBillOf3rdFloor.getText().toString());
+		electricityBillOf4thFloor = Integer.parseInt(txtElectricityBillOf4thFloor.getText().toString());
 		
 		waterBill = Integer.parseInt(txtWaterBillInput.getText().toString());
 		doubleStoveGasBill = Integer.parseInt(txtGasInput.getText().toString());
 		
-		totalUsage = Double.parseDouble(txtTotalUsage.getText().toString());
-		totalUsageOf2ndMeter = Double.parseDouble(txtSubmeterUnitCurrent.getText().toString()) - Double.parseDouble(txtSubmeterUnitPrev.getText().toString());;
+		unitsOf1stFloor = Double.parseDouble(txtUnitsOf1stFloor.getText().toString());
+		submeterUnitsOf1stFloor = Double.parseDouble(txtSubmeterUnitCurrent.getText().toString()) - Double.parseDouble(txtSubmeterUnitPrev.getText().toString());;
 		
-		charge1 = calc(1, totalUsage - totalUsageOf2ndMeter, totalUsage);
-		charge2 = calc(totalUsage - totalUsageOf2ndMeter + 1, totalUsage, totalUsage);
-		totalCharge = charge1 + charge2;
+		charge1 = calc(1, unitsOf1stFloor - submeterUnitsOf1stFloor, unitsOf1stFloor);
+		charge2 = calc(unitsOf1stFloor - submeterUnitsOf1stFloor + 1, unitsOf1stFloor, unitsOf1stFloor);
 		
 		vatOfCharge1 = charge1 * 5 / 100;
 		vatOfCharge2 = charge2 * 5 / 100;
 		charge1 = charge1 + vatOfCharge1;
 		charge2 = charge2 + vatOfCharge2;
 		
-		sendToDetailsView(totalUsage, totalUsageOf2ndMeter, charge1, charge2, waterBill, doubleStoveGasBill);
+		sendToDetailsView(unitsOf1stFloor, submeterUnitsOf1stFloor, charge1, charge2, electricityBillOf1stFloor, electricityBillOf2ndFloor, electricityBillOf3rdFloor, electricityBillOf4thFloor, waterBill, doubleStoveGasBill);
 	}
 	
-	private void sendToDetailsView(double totalUsage, double totalUsageOf2ndMeter, double charge1, double charge2, int waterBill, int gasBill)
+	private void sendToDetailsView(double unitsOf1stFloor,
+	                               double submeterUnitsOf1stFloor,
+	                               double chargeOf1stFloor,
+	                               double chargeOf1stFloorSubmeter,
+	                               double electricityBillOf1stFloor,
+	                               double electricityBillOf2ndFloor,
+	                               double electricityBillOf3rdFloor,
+	                               double electricityBillOf4thFloor,
+	                               int waterBill,
+	                               int gasBill)
 	{
 		Intent intent = new Intent(this, BillDetailsActivity.class);
 		
-		intent.putExtra("totalUsage", totalUsage);
-		intent.putExtra("totalUsageOf2ndMeter", totalUsageOf2ndMeter);
-		intent.putExtra("charge1", charge1);
-		intent.putExtra("charge2", charge2);
+		intent.putExtra("unitsOf1stFloor", unitsOf1stFloor);
+		intent.putExtra("submeterUnitsOf1stFloor", submeterUnitsOf1stFloor);
+		intent.putExtra("chargeOf1stFloor", chargeOf1stFloor);
+		intent.putExtra("chargeOf1stFloorSubmeter", chargeOf1stFloorSubmeter);
+		
+		intent.putExtra("electricityBillOf1stFloor", electricityBillOf1stFloor);
+		intent.putExtra("electricityBillOf2ndFloor", electricityBillOf2ndFloor);
+		intent.putExtra("electricityBillOf3rdFloor", electricityBillOf3rdFloor);
+		intent.putExtra("electricityBillOf4thFloor", electricityBillOf4thFloor);
+		
 		intent.putExtra("waterBill", waterBill);
 		intent.putExtra("gasBill", gasBill);
 		

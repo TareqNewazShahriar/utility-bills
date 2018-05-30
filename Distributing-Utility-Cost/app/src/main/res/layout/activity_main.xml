@@ -1,147 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+
+<ScrollView
     xmlns:an="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.doesnothaveadomain.splitunitcost.MainActivity"
     an:layout_width="match_parent"
-    an:layout_height="match_parent"
-    tools:context="com.doesnothaveadomain.splitunitcost.MainActivity">
+    an:layout_height="wrap_content">
 
-    <TextView
-        an:id="@+id/textView"
-        an:layout_width="wrap_content"
-        an:layout_height="wrap_content"
-        an:text="Total Usage"
-        an:layout_marginStart="16dp"
-        an:layout_marginTop="40dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    <android.support.constraint.ConstraintLayout
+        an:layout_width="match_parent"
+        an:layout_height="wrap_content">
 
-    <EditText
-        an:id="@+id/editTextTotalUsageInput"
-        an:layout_width="110dp"
-        an:layout_height="wrap_content"
-        an:layout_marginRight="16dp"
-        an:layout_marginTop="28dp"
-        an:ems="10"
-        an:inputType="numberDecimal"
-        an:text="456"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+            an:id="@+id/textView"
+            an:layout_width="wrap_content"
+            an:layout_height="wrap_content"
+            an:layout_marginEnd="132dp"
+            an:layout_marginLeft="16dp"
+            an:layout_marginTop="28dp"
+            an:text="Units of 1st Floor"
+            app:layout_constraintEnd_toStartOf="@+id/editTextUnitsOf1stFloor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <EditText
+            an:id="@+id/editTextUnitsOf1stFloor"
+            an:layout_width="110dp"
+            an:layout_height="wrap_content"
+            an:layout_marginRight="16dp"
+            an:layout_marginTop="16dp"
+            an:ems="10"
+            an:inputType="numberDecimal"
+            an:text="456"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
 
-    <TextView
-        an:id="@+id/textView2"
-        an:layout_width="wrap_content"
-        an:layout_height="wrap_content"
-        an:layout_marginLeft="16dp"
-        an:layout_marginTop="80dp"
-        an:text="Usage of 2nd Meter :"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+            an:id="@+id/textView2"
+            an:layout_width="wrap_content"
+            an:layout_height="wrap_content"
+            an:layout_marginLeft="16dp"
+            an:layout_marginTop="16dp"
+            an:text="Units of 2nd Meter :"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"/>
 
-    <EditText
-        an:id="@+id/editTextSubmeterUnitCurrentInput"
-        an:layout_width="110dp"
-        an:layout_height="wrap_content"
-        an:layout_marginRight="16dp"
-        an:layout_marginTop="148dp"
-        an:ems="10"
-        an:inputType="numberDecimal"
-        an:text="84"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <EditText
+            an:id="@+id/editTextSubmeterUnitCurrentInput"
+            an:layout_width="110dp"
+            an:layout_height="wrap_content"
+            an:layout_marginRight="16dp"
+            an:layout_marginTop="128dp"
+            an:ems="10"
+            an:inputType="numberDecimal"
+            an:text="84"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-    <EditText
-        an:id="@+id/editTextSubmeterBillPrevInput"
-        an:layout_width="110dp"
-        an:layout_height="wrap_content"
-        an:layout_marginRight="16dp"
-        an:layout_marginTop="96dp"
-        an:ems="10"
-        an:inputType="numberDecimal"
-        an:text="45"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <EditText
+            an:id="@+id/editTextSubmeterBillPrevInput"
+            an:layout_width="110dp"
+            an:layout_height="wrap_content"
+            an:layout_marginRight="16dp"
+            an:layout_marginTop="84dp"
+            an:ems="10"
+            an:inputType="numberDecimal"
+            an:text="45"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-    <TextView
-        an:id="@+id/textView7"
-        an:layout_width="wrap_content"
-        an:layout_height="wrap_content"
-        an:layout_marginLeft="16dp"
-        an:layout_marginTop="228dp"
-        an:text="Water"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+            an:id="@+id/textView7"
+            an:layout_width="wrap_content"
+            an:layout_height="wrap_content"
+            an:layout_marginEnd="204dp"
+            an:layout_marginLeft="28dp"
+            an:layout_marginTop="32dp"
+            an:text="Water"
+            app:layout_constraintEnd_toStartOf="@+id/editTextWaterBillInput"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13"/>
 
-    <EditText
-        an:id="@+id/editTextWaterBillInput"
-        an:layout_width="110dp"
-        an:layout_height="wrap_content"
-        an:layout_marginRight="16dp"
-        an:layout_marginTop="208dp"
-        an:ems="10"
-        an:inputType="number"
-        an:text="456"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <EditText
+            an:id="@+id/editTextWaterBillInput"
+            an:layout_width="110dp"
+            an:layout_height="wrap_content"
+            an:layout_marginRight="16dp"
+            an:layout_marginTop="4dp"
+            an:ems="10"
+            an:inputType="number"
+            an:text="456"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextElectricityBillOf4thFloor"/>
 
-    <TextView
-        an:id="@+id/textView8"
-        an:layout_width="wrap_content"
-        an:layout_height="wrap_content"
-        an:layout_marginLeft="16dp"
-        an:layout_marginTop="284dp"
-        an:text="Gas"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+            an:id="@+id/textView8"
+            an:layout_width="wrap_content"
+            an:layout_height="wrap_content"
+            an:layout_marginEnd="216dp"
+            an:layout_marginLeft="28dp"
+            an:layout_marginTop="36dp"
+            an:text="Gas"
+            app:layout_constraintEnd_toStartOf="@+id/editTextGasInput"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView7"/>
 
-    <EditText
-        an:id="@+id/editTextGasInput"
-        an:layout_width="110dp"
-        an:layout_height="wrap_content"
-        an:layout_marginRight="16dp"
-        an:layout_marginTop="268dp"
-        an:ems="10"
-        an:inputType="number"
-        an:text="800"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <EditText
+            an:id="@+id/editTextGasInput"
+            an:layout_width="110dp"
+            an:layout_height="wrap_content"
+            an:layout_marginRight="16dp"
+            an:layout_marginTop="4dp"
+            an:ems="10"
+            an:inputType="number"
+            an:text="800"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextWaterBillInput"/>
 
-    <Button
-        an:id="@+id/buttonCalculate"
-        an:layout_width="158dp"
-        an:layout_height="wrap_content"
-        an:layout_marginBottom="8dp"
-        an:layout_marginTop="8dp"
-        an:text="Calculate"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.838"/>
+        <Button
+            an:id="@+id/buttonCalculate"
+            an:layout_width="158dp"
+            an:layout_height="wrap_content"
+            an:layout_marginTop="80dp"
+            an:text="Calculate"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextGasInput"/>
 
-    <TextView
-        an:id="@+id/textView9"
-        an:layout_width="wrap_content"
-        an:layout_height="wrap_content"
-        an:layout_marginEnd="12dp"
-        an:layout_marginTop="112dp"
-        an:text="Previous Reading"
-        app:layout_constraintEnd_toStartOf="@+id/editTextSubmeterBillPrevInput"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+            an:id="@+id/textView9"
+            an:layout_width="wrap_content"
+            an:layout_height="wrap_content"
+            an:layout_marginEnd="24dp"
+            an:layout_marginTop="96dp"
+            an:text="Previous Reading"
+            app:layout_constraintEnd_toStartOf="@+id/editTextSubmeterBillPrevInput"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-    <TextView
-        an:id="@+id/textView10"
-        an:layout_width="wrap_content"
-        an:layout_height="wrap_content"
-        an:layout_marginEnd="16dp"
-        an:layout_marginTop="164dp"
-        an:text="Current Reading"
-        app:layout_constraintEnd_toStartOf="@+id/editTextSubmeterUnitCurrentInput"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+            an:id="@+id/textView10"
+            an:layout_width="wrap_content"
+            an:layout_height="wrap_content"
+            an:layout_marginEnd="28dp"
+            an:layout_marginTop="24dp"
+            an:text="Current Reading"
+            app:layout_constraintEnd_toStartOf="@+id/editTextSubmeterUnitCurrentInput"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9"/>
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            an:id="@+id/textView12"
+            an:layout_width="wrap_content"
+            an:layout_height="wrap_content"
+            an:layout_marginEnd="76dp"
+            an:layout_marginLeft="16dp"
+            an:layout_marginTop="48dp"
+            an:text="Electricity bill of 2nd Floor"
+            app:layout_constraintEnd_toStartOf="@+id/editTextElectricityBillOf2ndFloor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11"/>
+
+        <TextView
+            an:id="@+id/textView13"
+            an:layout_width="wrap_content"
+            an:layout_height="wrap_content"
+            an:layout_marginEnd="52dp"
+            an:layout_marginLeft="16dp"
+            an:layout_marginTop="48dp"
+            an:text="Electricity bill of 4th+1st Floor"
+            app:layout_constraintEnd_toStartOf="@+id/editTextElectricityBillOf4thFloor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView14"/>
+
+        <TextView
+            an:id="@+id/textView14"
+            an:layout_width="wrap_content"
+            an:layout_height="wrap_content"
+            an:layout_marginEnd="80dp"
+            an:layout_marginLeft="16dp"
+            an:layout_marginTop="48dp"
+            an:text="Electricity bill of 3rd Floor"
+            app:layout_constraintEnd_toStartOf="@+id/editTextElectricityBillOf3rdFloor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12"/>
+
+        <EditText
+            an:id="@+id/editTextElectricityBillOf2ndFloor"
+            an:layout_width="110dp"
+            an:layout_height="wrap_content"
+            an:layout_marginRight="16dp"
+            an:layout_marginTop="20dp"
+            an:ems="10"
+            an:inputType="number"
+            an:text="456"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextElectricityBillOf1stFloor"/>
+
+        <EditText
+            an:id="@+id/editTextElectricityBillOf3rdFloor"
+            an:layout_width="110dp"
+            an:layout_height="wrap_content"
+            an:layout_marginRight="16dp"
+            an:layout_marginTop="20dp"
+            an:ems="10"
+            an:inputType="number"
+            an:text="456"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextElectricityBillOf2ndFloor"/>
+
+        <EditText
+            an:id="@+id/editTextElectricityBillOf4thFloor"
+            an:layout_width="110dp"
+            an:layout_height="wrap_content"
+            an:layout_marginRight="16dp"
+            an:layout_marginTop="24dp"
+            an:ems="10"
+            an:inputType="number"
+            an:text="456"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextElectricityBillOf3rdFloor"/>
+
+        <TextView
+            an:id="@+id/textView11"
+            an:layout_width="wrap_content"
+            an:layout_height="wrap_content"
+            an:layout_marginEnd="80dp"
+            an:layout_marginLeft="16dp"
+            an:layout_marginTop="36dp"
+            an:text="Electricity Bill of 1st Floor"
+            app:layout_constraintEnd_toStartOf="@+id/editTextElectricityBillOf1stFloor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextSubmeterUnitCurrentInput"/>
+
+        <EditText
+            an:id="@+id/editTextElectricityBillOf1stFloor"
+            an:layout_width="110dp"
+            an:layout_height="wrap_content"
+            an:layout_marginRight="16dp"
+            an:layout_marginTop="24dp"
+            an:ems="10"
+            an:inputType="number"
+            an:text="456"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextSubmeterUnitCurrentInput"/>
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
+

@@ -36,7 +36,7 @@
 
     <ScrollView
         an:layout_width="match_parent"
-        an:layout_height="50000dp">
+        an:layout_height="wrap_content">
 
         <LinearLayout
             an:orientation="vertical"
@@ -55,8 +55,9 @@
                     an:layout_width="wrap_content"
                     an:layout_height="match_parent"
                     an:text="Bill of 1st Meter"/>
+
                 <TextView
-                    an:id="@+id/txtBillOfFirstMeter"
+                    an:id="@+id/textViewBillOfFirstMeter"
                     an:layout_width="wrap_content"
                     an:layout_height="wrap_content"
                     an:text="---"/>
@@ -70,8 +71,9 @@
                     an:layout_width="wrap_content"
                     an:layout_height="wrap_content"
                     an:text="Bill of 1st Meter"/>
+
                 <TextView
-                    an:id="@+id/txtBillOfSecondMeter"
+                    an:id="@+id/textViewBillOfSecondMeter"
                     an:layout_width="match_parent"
                     an:layout_height="wrap_content"
                     an:text="---"/>
@@ -86,8 +88,9 @@
                     an:layout_height="wrap_content"
                     an:width="200dp"
                     an:text="Total Charge (without VAT &amp; Demand charge)"/>
+
                 <TextView
-                    an:id="@+id/txtTotalCharge"
+                    an:id="@+id/textViewTotalCharge"
                     an:layout_width="wrap_content"
                     an:layout_height="wrap_content"
                     an:text="---"/>
