@@ -2,7 +2,6 @@ package com.doesnothaveadomain.splitunitcost;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,15 +22,6 @@ public class MainActivity extends AppCompatActivity
 		
 		InputMethodManager imm = (InputMethodManager)MainActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.showSoftInput(null, 0);
-	}
-	
-	protected void EmptyResultantTextViews()
-	{
-		TextView txtBillOfFirstMeter = findViewById(R.id.textViewBillOf1stMeter);
-		TextView txtBillOfSecondMeter = findViewById(R.id.textViewBillOf2ndMeter);
-		// empty resultant textviews
-		txtBillOfFirstMeter.setText(" ", TextView.BufferType.EDITABLE);
-		txtBillOfSecondMeter.setText(" ", TextView.BufferType.EDITABLE);
 	}
 	
 	protected void AttachCalculateButtonClickEvent()
@@ -80,7 +70,6 @@ public class MainActivity extends AppCompatActivity
 		sendToDetailsView(totalUsage, totalUsageOf2ndMeter, charge1, charge2, waterBill, doubleStoveGasBill);
 	}
 	
-	@NonNull
 	private void sendToDetailsView(double totalUsage, double totalUsageOf2ndMeter, double charge1, double charge2, int waterBill, int gasBill)
 	{
 		Intent intent = new Intent(this, BillDetailsActivity.class);
@@ -119,7 +108,7 @@ public class MainActivity extends AppCompatActivity
 				charge += t[2] * (unitTo >= t[0] && unitTo <= t[1] ? unitTo - (t[0] + adjustFrom) + 1 : t[1] - t[0] - adjustFrom + 1);
 			}
 		}
-
+		
 		return charge;
 	}
 }

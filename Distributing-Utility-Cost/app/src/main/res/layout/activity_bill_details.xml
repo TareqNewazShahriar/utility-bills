@@ -36,84 +36,168 @@
 
     <ScrollView
         an:layout_width="match_parent"
-        an:layout_height="match_parent">
+        an:layout_height="50000dp">
 
-        <android.support.constraint.ConstraintLayout
+        <LinearLayout
+            an:orientation="vertical"
             an:layout_width="match_parent"
-            an:layout_height="wrap_content">
+            an:layout_height="wrap_content"
+            an:layout_marginLeft="16dp"
+            an:layout_marginTop="92dp">
+
+            <LinearLayout
+                an:orientation="horizontal"
+                an:layout_width="match_parent"
+                an:layout_height="wrap_content">
+
+                <TextView
+                    an:layout_marginRight="10dp"
+                    an:layout_width="wrap_content"
+                    an:layout_height="match_parent"
+                    an:text="Bill of 1st Meter"/>
+                <TextView
+                    an:id="@+id/txtBillOfFirstMeter"
+                    an:layout_width="wrap_content"
+                    an:layout_height="wrap_content"
+                    an:text="---"/>
+            </LinearLayout>
+            <LinearLayout
+                an:orientation="horizontal"
+                an:layout_width="match_parent"
+                an:layout_height="wrap_content">
+                <TextView
+                    an:layout_marginRight="10dp"
+                    an:layout_width="wrap_content"
+                    an:layout_height="wrap_content"
+                    an:text="Bill of 1st Meter"/>
+                <TextView
+                    an:id="@+id/txtBillOfSecondMeter"
+                    an:layout_width="match_parent"
+                    an:layout_height="wrap_content"
+                    an:text="---"/>
+            </LinearLayout>
+            <LinearLayout
+                an:orientation="horizontal"
+                an:layout_width="match_parent"
+                an:layout_height="wrap_content">
+                <TextView
+                    an:layout_marginRight="10dp"
+                    an:layout_width="wrap_content"
+                    an:layout_height="wrap_content"
+                    an:width="200dp"
+                    an:text="Total Charge (without VAT &amp; Demand charge)"/>
+                <TextView
+                    an:id="@+id/txtTotalCharge"
+                    an:layout_width="wrap_content"
+                    an:layout_height="wrap_content"
+                    an:text="---"/>
+            </LinearLayout>
+
+            <TextView
+                an:id="@+id/textView6"
+                an:layout_marginTop="30dp"
+                an:layout_width="wrap_content"
+                an:layout_height="wrap_content"
+                an:text="২য় তলা"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <EditText
+                an:id="@+id/editText1stFloor"
+                an:layout_width="match_parent"
+                an:layout_height="114dp"
+                an:ems="10"
+                an:inputType="textMultiLine"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <Button
+                an:id="@+id/buttonMsgTo1stFloor"
+                an:layout_width="wrap_content"
+                an:layout_height="wrap_content"
+                an:text="Create Message"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 an:id="@+id/textView3"
+                an:layout_marginTop="20dp"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:layout_marginLeft="16dp"
-                an:layout_marginTop="221dp"
-                an:text="Bill of 1st Meter (+VAT)"
+                an:text="৩য় তলা"
                 app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <EditText
+                an:id="@+id/editText2ndFloor"
+                an:layout_width="match_parent"
+                an:layout_height="114dp"
+                an:ems="10"
+                an:inputType="textMultiLine"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <Button
+                an:id="@+id/buttonMsgTo2ndFloor"
+                an:layout_width="wrap_content"
+                an:layout_height="wrap_content"
+                an:text="Create Message"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 an:id="@+id/textView4"
+                an:layout_marginTop="20dp"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:layout_marginLeft="20dp"
-                an:layout_marginTop="284dp"
-                an:text="Bill of 2nd Meter (+VAT)"
+                an:text="৪র্থ তলা"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
-
-            <TextView
-                an:id="@+id/textViewBillOf1stMeter"
-                an:layout_width="wrap_content"
-                an:layout_height="wrap_content"
-                an:layout_marginLeft="190dp"
-                an:layout_marginStart="190dp"
-                an:layout_marginTop="221dp"
-                an:width="120dp"
-                an:text="-"
-                an:textIsSelectable="true"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <TextView
-                an:id="@+id/textViewBillOf2ndMeter"
-                an:layout_width="wrap_content"
-                an:layout_height="wrap_content"
-                an:layout_marginLeft="172dp"
-                an:layout_marginTop="284dp"
-                an:width="120dp"
-                an:text="-"
-                an:textIsSelectable="true"
-                app:layout_constraintLeft_toLeftOf="@+id/textView4"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <TextView
-                an:id="@+id/textView6"
-                an:layout_width="wrap_content"
-                an:layout_height="wrap_content"
-                an:layout_marginLeft="20dp"
-                an:layout_marginTop="360dp"
-                an:width="150dp"
-                an:text="Total Charge (without VAT &amp; Demand charge)"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <Button
-                an:id="@+id/buttonSendMsg"
-                an:layout_width="wrap_content"
-                an:layout_height="wrap_content"
-                an:layout_marginEnd="8dp"
-                an:layout_marginStart="8dp"
-                an:layout_marginTop="448dp"
-                an:text="Send Message"
+            <EditText
+                an:id="@+id/editText3rdFloor"
+                an:layout_width="match_parent"
+                an:layout_height="114dp"
+                an:ems="10"
+                an:inputType="textMultiLine"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <Button
+                an:id="@+id/buttonMsgTo3rdFloor"
+                an:layout_width="wrap_content"
+                an:layout_height="wrap_content"
+                an:text="Create Message"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
-        </android.support.constraint.ConstraintLayout>
+            <TextView
+                an:id="@+id/textView5"
+                an:layout_marginTop="20dp"
+                an:layout_width="wrap_content"
+                an:layout_height="wrap_content"
+                an:text="৫ম+১ম তলা"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <EditText
+                an:id="@+id/editText4thFloor"
+                an:layout_width="match_parent"
+                an:layout_height="114dp"
+                an:ems="10"
+                an:inputType="textMultiLine"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <Button
+                an:id="@+id/buttonMsgTo4thFloor"
+                an:layout_width="wrap_content"
+                an:layout_height="wrap_content"
+                an:text="Create Message"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </LinearLayout>
 
     </ScrollView>
 

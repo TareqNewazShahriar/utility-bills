@@ -4,10 +4,13 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.app.ActivityCompat;
@@ -16,12 +19,19 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.telephony.SmsManager;
+import java.util.Locale;
 
 public class BillDetailsActivity extends AppCompatActivity
 {
 	private static final int PERMISSION_REQUEST_ID = 1;
+	private static final String PHoneOf2ndFloor = "+8801670868869";
+	private static final String PHoneOf3rdFloor = "+8801706889400";
+	private static final String PHoneOf4thFloor = "+8801631294839; +8801631348696";
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -31,13 +41,16 @@ public class BillDetailsActivity extends AppCompatActivity
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 		
-		Button buttonSendMessage = findViewById(R.id.buttonSendMsg);
+		Button buttonSendMessage = findViewById(R.id.buttonMsgTo3rdFloor);
 		buttonSendMessage.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
 			public void onClick(View view)
 			{
-				SmsQueue();
+				Uri sms_uri = Uri.parse("smsto:+88016549869654");
+				Intent sms_intent = new Intent(Intent.ACTION_SENDTO, sms_uri);
+				sms_intent.putExtra("sms_body", "Good Morning ! how r U ?");
+				startActivity(sms_intent);
 			}
 		});
 	}
@@ -135,20 +148,20 @@ public class BillDetailsActivity extends AppCompatActivity
 		sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);
 	}
 	
-	/*protected void Show()
+	protected void Show()
 	{
-		EditText txtTotalUsage = (EditText) findViewById(R.id.editTextTotalUsageInput);
-		EditText txtSubmeterUnitPrev = (EditText) findViewById(R.id.editTextSubmeterBillPrevInput);
-		EditText txtSubmeterUnitCurrent = (EditText) findViewById(R.id.editTextSubmeterUnitCurrentInput);
-		TextView txtBillOfFirstMeter = (TextView) findViewById(R.id.textViewBillOf1stMeter);
-		TextView txtBillOfSecondMeter = (TextView) findViewById(R.id.textViewBillOf2ndMeter);
-		TextView txtTotalCharge = (TextView) findViewById(R.id.txtTotalCharge);
+		EditText txtTotalUsage = null;
+		EditText txtSubmeterUnitPrev = null;
+		EditText txtSubmeterUnitCurrent = null;
+		TextView txtBillOfFirstMeter = null;
+		TextView txtBillOfSecondMeter = null;
+		TextView txtTotalCharge = null;
 		
 		double totalUsage, totalUsageOf2ndMeter,
 				charge1, charge2, totalCharge, vatOfCharge1, vatOfCharge2;
 		
-		totalUsage = Double.parseDouble(txtTotalUsage.getText().toString());
-		totalUsageOf2ndMeter = Double.parseDouble(txtSubmeterUnitCurrent.getText().toString()) - Double.parseDouble(txtSubmeterUnitPrev.getText().toString());;
+		totalUsage = 0;
+		totalUsageOf2ndMeter = 0;
 		
 		charge1 = 0; // calc(1, totalUsage - totalUsageOf2ndMeter, totalUsage);
 		charge2 = 0; //calc(totalUsage - totalUsageOf2ndMeter + 1, totalUsage, totalUsage);
@@ -171,17 +184,7 @@ public class BillDetailsActivity extends AppCompatActivity
 		
 		txtTotalCharge.setText(String.format(Locale.ENGLISH, "%.02f", totalCharge));
 		
-		// copy 2nd meter bill to clipboard
-		ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-		//clipboard.setText(String.format(Locale.ENGLISH, "%.02f", charge2));
-		
-		
-		ClipData clipDataObj = ClipData.newPlainText("this is clipdata label",
-				String.format(Locale.ENGLISH, "%.02f", charge2));
-		clipboard.setPrimaryClip(clipDataObj);
-		
-		Toast.makeText(BillDetailsActivity.this, "2nd meter bill copied to clipboard", Toast.LENGTH_SHORT).show();
-	}*/
+	}
 	
 	
 	private boolean checkPermissions()

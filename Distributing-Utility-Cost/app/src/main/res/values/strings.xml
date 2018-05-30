@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Utility Bills</string>
-    <string name="title_activity_bill_details">BillDetailsActivity</string>
+    <string name="title_activity_bill_details">Separated cost</string>
     <string name="action_settings">Settings</string>
 </resources>
