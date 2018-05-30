@@ -6,7 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.doesnothaveadomain.splitunitcost.MainActivity"
     an:layout_width="match_parent"
-    an:layout_height="wrap_content">
+    an:layout_height="wrap_content"
+    an:layout_marginBottom="10dp">
 
     <android.support.constraint.ConstraintLayout
         an:layout_width="match_parent"

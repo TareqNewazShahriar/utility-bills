@@ -27,6 +27,7 @@ import java.util.Locale;
 public class BillDetailsActivity extends AppCompatActivity
 {
 	private static final int PERMISSION_REQUEST_ID = 1;
+	private static final String PhoneOf1stFloor = "+8801557452001";
 	private static final String PhoneOf2ndFloor = "+8801670868869";
 	private static final String PhoneOf3rdFloor = "+8801706889400";
 	private static final String PhoneOf4thFloor = "+8801631294839; +8801631348696";
@@ -41,6 +42,16 @@ public class BillDetailsActivity extends AppCompatActivity
 		setSupportActionBar(toolbar);
 		
 		// attach click send msg event for 2nd floor
+		// attach click send msg event for 2nd floor
+		(findViewById(R.id.buttonMsgTo1stFloor)).setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				OpenSmsApp(PhoneOf1stFloor, ((EditText)findViewById(R.id.editText1stFloor)).getText().toString());
+			}
+		});
+		
 		(findViewById(R.id.buttonMsgTo2ndFloor)).setOnClickListener(new View.OnClickListener()
 		{
 			@Override

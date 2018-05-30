@@ -45,7 +45,8 @@
             an:layout_height="wrap_content"
             an:layout_marginStart="10dp"
             an:layout_marginEnd="10dp"
-            an:layout_marginTop="10dp">
+            an:layout_marginTop="10dp"
+            an:paddingBottom="20dp">
 
             <LinearLayout
                 an:orientation="horizontal"
@@ -117,7 +118,8 @@
                 an:id="@+id/buttonMsgTo1stFloor"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:text="Create Message"/>
+                an:layout_gravity="right"
+                an:text="Open in Message"/>
 
             <TextView
                 an:id="@+id/textView3"
@@ -135,7 +137,8 @@
                 an:id="@+id/buttonMsgTo2ndFloor"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:text="Create Message"/>
+                an:layout_gravity="right"
+                an:text="Open in Message"/>
 
             <TextView
                 an:id="@+id/textView4"
@@ -153,7 +156,8 @@
                 an:id="@+id/buttonMsgTo3rdFloor"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:text="Create Message"/>
+                an:layout_gravity="right"
+                an:text="Open in Message"/>
 
             <TextView
                 an:id="@+id/textView5"
@@ -171,7 +175,8 @@
                 an:id="@+id/buttonMsgTo4thFloor"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:text="Create Message"/>
+                an:layout_gravity="right"
+                an:text="Open in Message"/>
         </LinearLayout>
 
     </ScrollView>
