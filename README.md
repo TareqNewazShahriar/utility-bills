@@ -7,4 +7,4 @@ An Android app to calculate and distribute monthly utility bills (electricity, g
 
 <br/>
 
-*-App icon designed by [@zularizal](https://github.com/zularizal)*
+*-App icon designed by [zularizal](https://github.com/zularizal)*
