@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<LinearLayout
     xmlns:an="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    an:orientation="vertical"
     an:layout_width="match_parent"
     an:layout_height="match_parent"
     an:fitsSystemWindows="true"
@@ -44,7 +45,7 @@
             an:layout_height="wrap_content"
             an:layout_marginStart="10dp"
             an:layout_marginEnd="10dp"
-            an:layout_marginTop="80dp">
+            an:layout_marginTop="10dp">
 
             <LinearLayout
                 an:orientation="horizontal"
@@ -65,13 +66,15 @@
             </LinearLayout>
             <LinearLayout
                 an:orientation="horizontal"
+                an:layout_marginTop="10dp"
                 an:layout_width="match_parent"
                 an:layout_height="wrap_content">
+
                 <TextView
-                    an:layout_marginRight="10dp"
                     an:layout_width="wrap_content"
                     an:layout_height="wrap_content"
-                    an:text="Bill of 1st Meter"/>
+                    an:layout_marginRight="10dp"
+                    an:text="Bill of 2nd Meter"/>
 
                 <TextView
                     an:id="@+id/textViewBillOfSecondMeter"
@@ -81,6 +84,7 @@
             </LinearLayout>
             <LinearLayout
                 an:orientation="horizontal"
+                an:layout_marginTop="10dp"
                 an:layout_width="match_parent"
                 an:layout_height="wrap_content">
                 <TextView
@@ -102,107 +106,74 @@
                 an:layout_marginTop="30dp"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:text="২য় তলা"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                an:text="২য় তলা"/>
             <EditText
                 an:id="@+id/editText1stFloor"
                 an:layout_width="match_parent"
-                an:layout_height="114dp"
+                an:layout_height="wrap_content"
                 an:ems="10"
-                an:inputType="textMultiLine"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                an:inputType="textMultiLine"/>
             <Button
                 an:id="@+id/buttonMsgTo1stFloor"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:text="Create Message"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                an:text="Create Message"/>
 
             <TextView
                 an:id="@+id/textView3"
                 an:layout_marginTop="20dp"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:text="৩য় তলা"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                an:text="৩য় তলা"/>
             <EditText
                 an:id="@+id/editText2ndFloor"
                 an:layout_width="match_parent"
-                an:layout_height="114dp"
+                an:layout_height="wrap_content"
                 an:ems="10"
-                an:inputType="textMultiLine"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                an:inputType="textMultiLine"/>
             <Button
                 an:id="@+id/buttonMsgTo2ndFloor"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:text="Create Message"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                an:text="Create Message"/>
 
             <TextView
                 an:id="@+id/textView4"
                 an:layout_marginTop="20dp"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:text="৪র্থ তলা"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
+                an:text="৪র্থ তলা"/>
             <EditText
                 an:id="@+id/editText3rdFloor"
-                an:layout_width="match_parent"
+                an:layout_width="wrap_content"
                 an:layout_height="114dp"
                 an:ems="10"
-                an:inputType="textMultiLine"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                an:inputType="textMultiLine"/>
             <Button
                 an:id="@+id/buttonMsgTo3rdFloor"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:text="Create Message"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                an:text="Create Message"/>
 
             <TextView
                 an:id="@+id/textView5"
                 an:layout_marginTop="20dp"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:text="৫ম+১ম তলা"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                an:text="৫ম+১ম তলা"/>
             <EditText
                 an:id="@+id/editText4thFloor"
                 an:layout_width="match_parent"
-                an:layout_height="114dp"
+                an:layout_height="wrap_content"
                 an:ems="10"
-                an:inputType="textMultiLine"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                an:inputType="textMultiLine"/>
             <Button
                 an:id="@+id/buttonMsgTo4thFloor"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:text="Create Message"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                an:text="Create Message"/>
         </LinearLayout>
 
     </ScrollView>
 
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

@@ -162,7 +162,7 @@
             an:layout_height="wrap_content"
             an:layout_marginLeft="16dp"
             an:layout_marginTop="48dp"
-            an:text="Electricity bill of 4th+1st Floor"
+            an:text="Electricity bill of 4th Floor"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView14"/>
 
