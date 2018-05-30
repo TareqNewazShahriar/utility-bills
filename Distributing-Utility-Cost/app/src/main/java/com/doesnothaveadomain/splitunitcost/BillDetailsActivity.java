@@ -254,10 +254,10 @@ public class BillDetailsActivity extends AppCompatActivity
 		
 		txtTotalCharge.setText(String.format(Locale.ENGLISH, "%.02f", totalRawChargeOf1stFloor));
 		
-		SetDetailsBill(R.id.editText1stFloor, electricityBillOf1stFloor-electricityChargeOf1stFloorSubmeter, motorBillPerOwner, waterBillPerFloor, gasBillDoubleStove);
-		SetDetailsBill(R.id.editText2ndFloor, electricityBillOf2ndFloor, motorBillPerOwner, waterBillPerFloor, gasBillDoubleStove);
-		SetDetailsBill(R.id.editText3rdFloor, electricityBillOf3rdFloor, motorBillPerOwner, waterBillPerFloor, gasBillDoubleStove);
-		SetDetailsBill(R.id.editText4thFloor, electricityBillOf4thFloor, motorBillPerOwner, waterBillPerFloor*2, gasBillDoubleStove+(gasBillSingleStove*2));
+		SetDetailsBill(R.id.editText1stFloor, Math.ceil(electricityBillOf1stFloor-electricityChargeOf1stFloorSubmeter), Math.ceil(motorBillPerOwner), Math.ceil(waterBillPerFloor), gasBillDoubleStove);
+		SetDetailsBill(R.id.editText2ndFloor, electricityBillOf2ndFloor, (int)motorBillPerOwner, (int)waterBillPerFloor, gasBillDoubleStove);
+		SetDetailsBill(R.id.editText3rdFloor, electricityBillOf3rdFloor, (int)motorBillPerOwner, (int)waterBillPerFloor, gasBillDoubleStove);
+		SetDetailsBill(R.id.editText4thFloor, electricityBillOf4thFloor, (int)motorBillPerOwner, (int)waterBillPerFloor*2, gasBillDoubleStove+(gasBillSingleStove*2));
 	}
 	
 	private void SetDetailsBill(int id, double electricityBill, double motorBill, double waterBill, double gasBill)
