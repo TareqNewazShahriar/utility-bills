@@ -31,7 +31,6 @@
             an:layout_marginTop="16dp"
             an:ems="10"
             an:inputType="numberDecimal"
-            an:text="456"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -54,7 +53,6 @@
             an:layout_marginTop="128dp"
             an:ems="10"
             an:inputType="numberDecimal"
-            an:text="84"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -66,7 +64,6 @@
             an:layout_marginTop="84dp"
             an:ems="10"
             an:inputType="numberDecimal"
-            an:text="45"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -88,7 +85,6 @@
             an:layout_marginTop="4dp"
             an:ems="10"
             an:inputType="number"
-            an:text="456"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextElectricityBillOf4thFloor"/>
 
@@ -185,7 +181,6 @@
             an:layout_marginTop="20dp"
             an:ems="10"
             an:inputType="number"
-            an:text="456"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextElectricityBillOf1stFloor"/>
 
@@ -197,7 +192,6 @@
             an:layout_marginTop="20dp"
             an:ems="10"
             an:inputType="number"
-            an:text="456"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextElectricityBillOf2ndFloor"/>
 
@@ -209,7 +203,6 @@
             an:layout_marginTop="24dp"
             an:ems="10"
             an:inputType="number"
-            an:text="456"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextElectricityBillOf3rdFloor"/>
 
@@ -231,7 +224,6 @@
             an:layout_marginTop="24dp"
             an:ems="10"
             an:inputType="number"
-            an:text="456"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextSubmeterUnitCurrentInput"/>
 
