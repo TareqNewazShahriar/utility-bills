@@ -93,7 +93,7 @@
                     an:layout_width="wrap_content"
                     an:layout_height="wrap_content"
                     an:width="200dp"
-                    an:text="Total Charge (without VAT &amp; Demand charge)"/>
+                    an:text="Total Raw Charge (without VAT, Demand charge etc)"/>
 
                 <TextView
                     an:id="@+id/textViewTotalCharge"

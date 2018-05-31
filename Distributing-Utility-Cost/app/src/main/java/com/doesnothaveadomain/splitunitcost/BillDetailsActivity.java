@@ -230,25 +230,25 @@ public class BillDetailsActivity extends AppCompatActivity
 		vatOfCharge2 = electricityChargeOf1stFloorSubmeter * 5 / 100;
 		electricityChargeOf1stFloorSubmeter = electricityChargeOf1stFloorSubmeter + vatOfCharge2;
 		
-		motorBillPerOwner = electricityChargeOf1stFloorSubmeter / 4;
-		waterBillPerFloor = waterBill / 5;
+		motorBillPerOwner = electricityChargeOf1stFloorSubmeter / 4.0;
+		waterBillPerFloor = waterBill / 5.0;
 		gasBillSingleStove = gasBillDoubleStove - 50;
 		
 		
 		// set to controls
-		txtBillOfFirstMeter.setText(String.format(Locale.ENGLISH, "%.02f", chargeOf1stFloor)
+		txtBillOfFirstMeter.setText(String.format(Locale.ENGLISH, "%.2f", chargeOf1stFloor)
 						+ " TK for Unit "
-						+ String.format(Locale.ENGLISH, "%.0f", unitsOf1stFloor - unitsOf1stFloorSubmeter)
+						+ String.format(Locale.ENGLISH, "%.2f", unitsOf1stFloor - unitsOf1stFloorSubmeter)
 						+ ". Late: "
-						+  String.format(Locale.ENGLISH, "%.0f", (chargeOf1stFloor+vatOfCharge1))
+						+  String.format(Locale.ENGLISH, "%.2f", (chargeOf1stFloor+vatOfCharge1))
 						+ "tk",
 				TextView.BufferType.EDITABLE);
 		
-		txtBillOfSecondMeter.setText(String.format(Locale.ENGLISH, "%.02f", electricityChargeOf1stFloorSubmeter)
+		txtBillOfSecondMeter.setText(String.format(Locale.ENGLISH, "%.2f", electricityChargeOf1stFloorSubmeter)
 						+ " TK for Unit "
-						+ unitsOf1stFloorSubmeter
+						+  String.format(Locale.ENGLISH, "%.2f", unitsOf1stFloorSubmeter)
 						+ ". Late: "
-						+ String.format(Locale.ENGLISH, "%.0f", electricityChargeOf1stFloorSubmeter+vatOfCharge2)
+						+ String.format(Locale.ENGLISH, "%.2f", electricityChargeOf1stFloorSubmeter+vatOfCharge2)
 						+ "tk",
 				TextView.BufferType.EDITABLE);
 		
@@ -257,7 +257,7 @@ public class BillDetailsActivity extends AppCompatActivity
 		SetDetailsBill(R.id.editText1stFloor, Math.ceil(electricityBillOf1stFloor-electricityChargeOf1stFloorSubmeter), Math.ceil(motorBillPerOwner), Math.ceil(waterBillPerFloor), gasBillDoubleStove);
 		SetDetailsBill(R.id.editText2ndFloor, electricityBillOf2ndFloor, (int)motorBillPerOwner, (int)waterBillPerFloor, gasBillDoubleStove);
 		SetDetailsBill(R.id.editText3rdFloor, electricityBillOf3rdFloor, (int)motorBillPerOwner, (int)waterBillPerFloor, gasBillDoubleStove);
-		SetDetailsBill(R.id.editText4thFloor, electricityBillOf4thFloor, (int)motorBillPerOwner, (int)waterBillPerFloor*2, gasBillDoubleStove+(gasBillSingleStove*2));
+		SetDetailsBill(R.id.editText4thFloor, electricityBillOf4thFloor, (int)motorBillPerOwner, Math.floor(waterBillPerFloor*2), gasBillDoubleStove+(gasBillSingleStove*2));
 	}
 	
 	private void SetDetailsBill(int id, double electricityBill, double motorBill, double waterBill, double gasBill)

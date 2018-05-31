@@ -71,11 +71,6 @@ public class MainActivity extends AppCompatActivity
 		charge1 = calc(1, unitsOf1stFloor - submeterUnitsOf1stFloor, unitsOf1stFloor);
 		charge2 = calc(unitsOf1stFloor - submeterUnitsOf1stFloor + 1, unitsOf1stFloor, unitsOf1stFloor);
 		
-		vatOfCharge1 = charge1 * 5 / 100;
-		vatOfCharge2 = charge2 * 5 / 100;
-		charge1 = charge1 + vatOfCharge1;
-		charge2 = charge2 + vatOfCharge2;
-		
 		sendToDetailsView(unitsOf1stFloor, submeterUnitsOf1stFloor, charge1, charge2, electricityBillOf1stFloor, electricityBillOf2ndFloor, electricityBillOf3rdFloor, electricityBillOf4thFloor, waterBill, doubleStoveGasBill);
 	}
 	
