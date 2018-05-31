@@ -38,8 +38,6 @@ public class BillDetailsActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_bill_details);
-		Toolbar toolbar = findViewById(R.id.toolbar);
-		setSupportActionBar(toolbar);
 		
 		// attach click send msg event for 2nd floor
 		// attach click send msg event for 2nd floor

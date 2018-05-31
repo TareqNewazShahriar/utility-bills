@@ -9,31 +9,19 @@
     an:fitsSystemWindows="true"
     tools:context="com.doesnothaveadomain.splitunitcost.BillDetailsActivity">
 
-    <android.support.design.widget.AppBarLayout
-        an:id="@+id/app_bar"
+    <LinearLayout
         an:layout_width="match_parent"
-        an:layout_height="@dimen/app_bar_height"
-        an:fitsSystemWindows="true"
-        an:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.design.widget.CollapsingToolbarLayout
-            an:id="@+id/toolbar_layout"
-            an:layout_width="match_parent"
-            an:layout_height="match_parent"
-            an:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:toolbarId="@+id/toolbar">
-
-            <android.support.v7.widget.Toolbar
-                an:id="@+id/toolbar"
-                an:layout_width="match_parent"
-                an:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay"/>
-
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
+        an:layout_height="60dp"
+        an:background="@color/colorPrimary"
+        an:paddingHorizontal="10dp">
+        <TextView
+            an:layout_width="wrap_content"
+            an:layout_height="wrap_content"
+            an:layout_gravity="center_vertical"
+            an:textSize="11pt"
+            an:textColor="#ffffff"
+            an:text="Detail Distributed Bill"/>
+    </LinearLayout>
 
     <ScrollView
         an:layout_width="match_parent"
@@ -177,6 +165,7 @@
                 an:layout_height="wrap_content"
                 an:layout_gravity="right"
                 an:text="Open in Message"/>
+
         </LinearLayout>
 
     </ScrollView>
