@@ -10,16 +10,16 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.telephony.SmsManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.telephony.SmsManager;
+
 import java.text.DateFormatSymbols;
 import java.util.Calendar;
 import java.util.Locale;
@@ -32,15 +32,14 @@ public class BillDetailsActivity extends AppCompatActivity
 	private static final String PhoneOf3rdFloor = "+8801706889400";
 	private static final String PhoneOf4thFloor = "+8801631294839; +8801631348696";
 	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_bill_details);
 		
-		// attach click send msg event for 2nd floor
-		// attach click send msg event for 2nd floor
+		// attaching write message event for renters
+		// 1st floor
 		(findViewById(R.id.buttonMsgTo1stFloor)).setOnClickListener(new View.OnClickListener()
 		{
 			@Override
@@ -49,7 +48,7 @@ public class BillDetailsActivity extends AppCompatActivity
 				OpenSmsApp(PhoneOf1stFloor, ((EditText)findViewById(R.id.editText1stFloor)).getText().toString());
 			}
 		});
-		
+		// 2nd floor
 		(findViewById(R.id.buttonMsgTo2ndFloor)).setOnClickListener(new View.OnClickListener()
 		{
 			@Override
@@ -58,8 +57,7 @@ public class BillDetailsActivity extends AppCompatActivity
 				OpenSmsApp(PhoneOf2ndFloor, ((EditText)findViewById(R.id.editText2ndFloor)).getText().toString());
 			}
 		});
-		
-		// attach click send msg event for 3rd floor
+		// 3rd floor
 		(findViewById(R.id.buttonMsgTo3rdFloor)).setOnClickListener(new View.OnClickListener()
 		{
 			@Override
@@ -68,8 +66,7 @@ public class BillDetailsActivity extends AppCompatActivity
 				OpenSmsApp(PhoneOf3rdFloor, ((EditText)findViewById(R.id.editText3rdFloor)).getText().toString());
 			}
 		});
-		
-		// attach click send msg event for 4th floor
+		// 4th floor
 		(findViewById(R.id.buttonMsgTo4thFloor)).setOnClickListener(new View.OnClickListener()
 		{
 			@Override
@@ -79,37 +76,84 @@ public class BillDetailsActivity extends AppCompatActivity
 			}
 		});
 		
+		
+		// attach click event to send msg directly
+		// 1st floor
+		(findViewById(R.id.buttonSendMsgTo1stFloor)).setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				sendSms(PhoneOf1stFloor, ((EditText)findViewById(R.id.editText1stFloor)).getText().toString());
+			}
+		});
+		// 2nd floor
+		(findViewById(R.id.buttonSendMsgTo2ndFloor)).setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				sendSms(PhoneOf2ndFloor, ((EditText)findViewById(R.id.editText2ndFloor)).getText().toString());
+			}
+		});
+		// 3rd floor
+		(findViewById(R.id.buttonSendMsgTo3rdFloor)).setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				sendSms(PhoneOf3rdFloor, ((EditText)findViewById(R.id.editText3rdFloor)).getText().toString());
+			}
+		});
+		// 4th floor
+		(findViewById(R.id.buttonSendMsgTo4thFloor)).setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				sendSms(PhoneOf4thFloor, ((EditText)findViewById(R.id.editText4thFloor)).getText().toString());
+			}
+		});
+		
 		ShowDetails();
 	}
 	
 	private void OpenSmsApp(String phoneNumber, String msg)
 	{
+		if (checkPermissions(new String[]{Manifest.permission.SEND_SMS}) == false)
+			return;
+		
 		Uri sms_uri = Uri.parse("smsto:" + phoneNumber);
 		Intent sms_intent = new Intent(Intent.ACTION_SENDTO, sms_uri);
 		sms_intent.putExtra("sms_body", msg);
 		startActivity(sms_intent);
 	}
 	
-	private void PrepareForMessaging()
-	{
-		if(checkPermissions())
-		{
-			String msg = "This test message automatically sent by the app\n'Distributing Utility Cost'.";
-			String phoneNum = "+8801558960472";
-			sendSms(phoneNum, msg);
-		}
-	}
-	
 	private void sendSms(String phoneNum, String msg)
 	{
-		if(!TextUtils.isEmpty(msg) && !TextUtils.isEmpty(phoneNum))
+		// Validation:
+		if(!checkPermissions(new String[]{ Manifest.permission.SEND_SMS, Manifest.permission.READ_PHONE_STATE }))
 		{
-			//Get the default SmsManager//
-			SmsManager smsManager = SmsManager.getDefault();
-			
-			//Send the SMS//
-			smsManager.sendTextMessage(phoneNum, null, msg, null, null);
+		    return;
 		}
+		else if (!TextUtils.isEmpty(msg))
+		{
+			Toast.makeText(BillDetailsActivity.this,
+					"What is the point of sending empty message?", Toast.LENGTH_LONG).show();
+			return;
+		}
+		else if (!TextUtils.isEmpty(phoneNum))
+		{
+			Toast.makeText(BillDetailsActivity.this,
+					"[For developer]: why the hack phone number is empty #$#$%", Toast.LENGTH_LONG).show();
+			return;
+		}
+		
+		//Get the default SmsManager//
+		SmsManager smsManager = SmsManager.getDefault();
+		
+		//Send the SMS//
+		smsManager.sendTextMessage(phoneNum, null, msg, null, null);
 	}
 	
 	private void sendSms2(String phoneNumber, String message)
@@ -289,23 +333,22 @@ public class BillDetailsActivity extends AppCompatActivity
 	}
 	
 	
-	private boolean checkPermissions()
+	private boolean checkPermissions(String[] permissions)
 	{
-		boolean ok = true;
-		for (String item: new String[]{ Manifest.permission.SEND_SMS, Manifest.permission.READ_PHONE_STATE })
+		boolean granted = true;
+		
+		for (String permission: permissions)
 		{
-			int result = ContextCompat.checkSelfPermission(BillDetailsActivity.this, item);
+			int result = ContextCompat.checkSelfPermission(BillDetailsActivity.this, permission);
 			
-			if (result == PackageManager.PERMISSION_GRANTED)
-				ok = ok & true;
-			else
+			if (result != PackageManager.PERMISSION_GRANTED)
 			{
-				requestPermission(item);
-				ok = ok & false;
+				requestPermission(permission);
+				granted = false;
 			}
 		}
 		
-		return ok;
+		return granted;
 	}
 	
 	private void requestPermission(String permission)
@@ -319,13 +362,12 @@ public class BillDetailsActivity extends AppCompatActivity
 		if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
 		{
 			Toast.makeText(BillDetailsActivity.this,
-					"Permission accepted", Toast.LENGTH_LONG).show();
-			PrepareForMessaging();
+					"Permission granted. Please perform your operation.", Toast.LENGTH_LONG).show();
 		}
 		else
 		{
 			Toast.makeText(BillDetailsActivity.this,
-					"Permission denied", Toast.LENGTH_LONG).show();
+					"Permission denied.", Toast.LENGTH_SHORT).show();
 		}
 		
 	}

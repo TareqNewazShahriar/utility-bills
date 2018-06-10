@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:an="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     an:orientation="vertical"
     an:layout_width="match_parent"
@@ -13,7 +12,7 @@
         an:layout_width="match_parent"
         an:layout_height="60dp"
         an:background="@color/colorPrimary"
-        an:paddingHorizontal="10dp">
+        an:paddingStart="10dp">
         <TextView
             an:layout_width="wrap_content"
             an:layout_height="wrap_content"
@@ -102,12 +101,22 @@
                 an:layout_height="wrap_content"
                 an:ems="10"
                 an:inputType="textMultiLine"/>
-            <Button
-                an:id="@+id/buttonMsgTo1stFloor"
-                an:layout_width="wrap_content"
+            <LinearLayout
+                an:layout_width="match_parent"
                 an:layout_height="wrap_content"
-                an:layout_gravity="right"
-                an:text="Open in Message"/>
+                an:gravity="end">
+                <Button
+                    an:id="@+id/buttonSendMsgTo1stFloor"
+                    an:layout_width="wrap_content"
+                    an:layout_height="wrap_content"
+                    an:layout_marginEnd="5dp"
+                    an:text="Send Message"/>
+                <Button
+                    an:id="@+id/buttonMsgTo1stFloor"
+                    an:layout_width="wrap_content"
+                    an:layout_height="wrap_content"
+                    an:text="Write Message"/>
+            </LinearLayout>
 
             <TextView
                 an:id="@+id/textView3"
@@ -121,12 +130,23 @@
                 an:layout_height="wrap_content"
                 an:ems="10"
                 an:inputType="textMultiLine"/>
-            <Button
-                an:id="@+id/buttonMsgTo2ndFloor"
-                an:layout_width="wrap_content"
+            <LinearLayout
+                an:layout_width="match_parent"
                 an:layout_height="wrap_content"
-                an:layout_gravity="right"
-                an:text="Open in Message"/>
+                an:gravity="end">
+                <Button
+                    an:id="@+id/buttonSendMsgTo2ndFloor"
+                    an:layout_width="wrap_content"
+                    an:layout_height="wrap_content"
+                    an:layout_marginEnd="5dp"
+                    an:text="Send Message"/>
+                <Button
+                    an:id="@+id/buttonMsgTo2ndFloor"
+                    an:layout_width="wrap_content"
+                    an:layout_height="wrap_content"
+
+                    an:text="Write Message"/>
+            </LinearLayout>
 
             <TextView
                 an:id="@+id/textView4"
@@ -140,12 +160,22 @@
                 an:layout_height="wrap_content"
                 an:ems="10"
                 an:inputType="textMultiLine"/>
-            <Button
-                an:id="@+id/buttonMsgTo3rdFloor"
-                an:layout_width="wrap_content"
+            <LinearLayout
+                an:layout_width="match_parent"
                 an:layout_height="wrap_content"
-                an:layout_gravity="right"
-                an:text="Open in Message"/>
+                an:gravity="end">
+                <Button
+                    an:id="@+id/buttonSendMsgTo3rdFloor"
+                    an:layout_width="wrap_content"
+                    an:layout_height="wrap_content"
+                    an:layout_marginEnd="5dp"
+                    an:text="Send Message"/>
+                <Button
+                    an:id="@+id/buttonMsgTo3rdFloor"
+                    an:layout_width="wrap_content"
+                    an:layout_height="wrap_content"
+                    an:text="Write Message"/>
+            </LinearLayout>
 
             <TextView
                 an:id="@+id/textView5"
@@ -159,12 +189,22 @@
                 an:layout_height="wrap_content"
                 an:ems="10"
                 an:inputType="textMultiLine"/>
-            <Button
-                an:id="@+id/buttonMsgTo4thFloor"
-                an:layout_width="wrap_content"
+            <LinearLayout
+                an:layout_width="match_parent"
                 an:layout_height="wrap_content"
-                an:layout_gravity="right"
-                an:text="Open in Message"/>
+                an:gravity="right">
+                <Button
+                    an:id="@+id/buttonSendMsgTo4thFloor"
+                    an:layout_width="wrap_content"
+                    an:layout_height="wrap_content"
+                    an:layout_marginEnd="5dp"
+                    an:text="Send Message"/>
+                <Button
+                    an:id="@+id/buttonMsgTo4thFloor"
+                    an:layout_width="wrap_content"
+                    an:layout_height="wrap_content"
+                    an:text="Write Message"/>
+            </LinearLayout>
 
         </LinearLayout>
 

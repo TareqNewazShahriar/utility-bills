@@ -2,12 +2,14 @@ package com.doesnothaveadomain.splitunitcost;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -51,6 +53,19 @@ public class MainActivity extends AppCompatActivity
 		EditText txtWaterBillInput = findViewById(R.id.editTextWaterBillInput);
 		EditText txtGasInput = findViewById(R.id.editTextGasInput);
 		
+		if(TextUtils.isEmpty(txtUnitsOf1stFloor.getText())
+				|| TextUtils.isEmpty(txtSubmeterUnitPrev.getText())
+				|| TextUtils.isEmpty(txtSubmeterUnitCurrent.getText())
+				|| TextUtils.isEmpty(txtElectricityBillOf1stFloor.getText())
+				|| TextUtils.isEmpty(txtElectricityBillOf2ndFloor.getText())
+				|| TextUtils.isEmpty(txtElectricityBillOf3rdFloor.getText())
+				|| TextUtils.isEmpty(txtElectricityBillOf4thFloor.getText())
+				|| TextUtils.isEmpty(txtWaterBillInput.getText())
+				|| TextUtils.isEmpty(txtGasInput.getText()) )
+		{
+			Toast.makeText(this, "All are required fields.", Toast.LENGTH_LONG);
+		}
+		
 		double unitsOf1stFloor, submeterUnitsOf1stFloor,
 				electricityBillOf1stFloor,
 				electricityBillOf2ndFloor, electricityBillOf3rdFloor, electricityBillOf4thFloor,
@@ -66,7 +81,7 @@ public class MainActivity extends AppCompatActivity
 		doubleStoveGasBill = Integer.parseInt(txtGasInput.getText().toString());
 		
 		unitsOf1stFloor = Double.parseDouble(txtUnitsOf1stFloor.getText().toString());
-		submeterUnitsOf1stFloor = Double.parseDouble(txtSubmeterUnitCurrent.getText().toString()) - Double.parseDouble(txtSubmeterUnitPrev.getText().toString());;
+		submeterUnitsOf1stFloor = Double.parseDouble(txtSubmeterUnitCurrent.getText().toString()) - Double.parseDouble(txtSubmeterUnitPrev.getText().toString());
 		
 		charge1 = calc(1, unitsOf1stFloor - submeterUnitsOf1stFloor, unitsOf1stFloor);
 		charge2 = calc(unitsOf1stFloor - submeterUnitsOf1stFloor + 1, unitsOf1stFloor, unitsOf1stFloor);
