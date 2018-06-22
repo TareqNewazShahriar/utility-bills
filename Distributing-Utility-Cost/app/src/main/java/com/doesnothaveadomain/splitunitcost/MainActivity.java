@@ -63,7 +63,8 @@ public class MainActivity extends AppCompatActivity
 				|| TextUtils.isEmpty(txtWaterBillInput.getText())
 				|| TextUtils.isEmpty(txtGasInput.getText()) )
 		{
-			Toast.makeText(this, "All are required fields.", Toast.LENGTH_LONG);
+			Toast.makeText(this, "All are required fields.", Toast.LENGTH_LONG).show();
+			return;
 		}
 		
 		double unitsOf1stFloor, submeterUnitsOf1stFloor,
