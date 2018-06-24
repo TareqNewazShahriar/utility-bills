@@ -21,7 +21,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DateFormatSymbols;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class BillDetailsActivity extends AppCompatActivity
@@ -337,24 +339,29 @@ public class BillDetailsActivity extends AppCompatActivity
 	private boolean checkPermissions(String[] permissions)
 	{
 		boolean granted = true;
+		List<String> needPermissions = new ArrayList<>();
 		
 		for (String permission: permissions)
 		{
 			int result = ContextCompat.checkSelfPermission(BillDetailsActivity.this, permission);
-			
 			if (result != PackageManager.PERMISSION_GRANTED)
 			{
-				requestPermission(permission);
-				granted = false;
+				needPermissions.add(permission);
 			}
+		}
+		
+		if (needPermissions.size() > 0)
+		{
+			requestPermission(needPermissions.toArray(new String[0]));
+			granted = false;
 		}
 		
 		return granted;
 	}
 	
-	private void requestPermission(String permission)
+	private void requestPermission(String[] permissions)
 	{
-		ActivityCompat.requestPermissions(this, new String[]{ permission }, PERMISSION_REQUEST_ID);
+		ActivityCompat.requestPermissions(this, permissions, PERMISSION_REQUEST_ID);
 	}
 	
 	@Override
