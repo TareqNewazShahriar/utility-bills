@@ -38,7 +38,7 @@ public class BillDetailsActivity extends AppCompatActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_bill_details);
 		
-		// attaching write message event for renters
+		//region Attaching write message event for renters
 		// 1st floor
 		(findViewById(R.id.buttonMsgTo1stFloor)).setOnClickListener(new View.OnClickListener()
 		{
@@ -75,9 +75,9 @@ public class BillDetailsActivity extends AppCompatActivity
 				OpenSmsApp(PhoneOf4thFloor, ((EditText)findViewById(R.id.editText4thFloor)).getText().toString());
 			}
 		});
+		//endregion
 		
-		
-		// attach click event to send msg directly
+		//region Attach click event to send msg directly
 		// 1st floor
 		(findViewById(R.id.buttonSendMsgTo1stFloor)).setOnClickListener(new View.OnClickListener()
 		{
@@ -114,6 +114,7 @@ public class BillDetailsActivity extends AppCompatActivity
 				sendSms(PhoneOf4thFloor, ((EditText)findViewById(R.id.editText4thFloor)).getText().toString());
 			}
 		});
+		//endregion
 		
 		ShowDetails();
 	}
@@ -136,13 +137,13 @@ public class BillDetailsActivity extends AppCompatActivity
 		{
 		    return;
 		}
-		else if (!TextUtils.isEmpty(msg))
+		else if (TextUtils.isEmpty(msg))
 		{
 			Toast.makeText(BillDetailsActivity.this,
 					"What is the point of sending empty message?", Toast.LENGTH_LONG).show();
 			return;
 		}
-		else if (!TextUtils.isEmpty(phoneNum))
+		else if (TextUtils.isEmpty(phoneNum))
 		{
 			Toast.makeText(BillDetailsActivity.this,
 					"[For developer]: why the hack phone number is empty #$#$%", Toast.LENGTH_LONG).show();
