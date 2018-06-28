@@ -2,9 +2,11 @@ package com.doesnothaveadomain.splitunitcost;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -86,7 +88,7 @@ public class BillDetailsActivity extends AppCompatActivity
 			@Override
 			public void onClick(View view)
 			{
-				sendSms(PhoneOf1stFloor, ((EditText)findViewById(R.id.editText1stFloor)).getText().toString());
+				directlySendSms(PhoneOf1stFloor, ((EditText)findViewById(R.id.editText1stFloor)).getText().toString());
 			}
 		});
 		// 2nd floor
@@ -95,7 +97,7 @@ public class BillDetailsActivity extends AppCompatActivity
 			@Override
 			public void onClick(View view)
 			{
-				sendSms(PhoneOf2ndFloor, ((EditText)findViewById(R.id.editText2ndFloor)).getText().toString());
+				directlySendSms(PhoneOf2ndFloor, ((EditText)findViewById(R.id.editText2ndFloor)).getText().toString());
 			}
 		});
 		// 3rd floor
@@ -104,7 +106,7 @@ public class BillDetailsActivity extends AppCompatActivity
 			@Override
 			public void onClick(View view)
 			{
-				sendSms(PhoneOf3rdFloor, ((EditText)findViewById(R.id.editText3rdFloor)).getText().toString());
+				directlySendSms(PhoneOf3rdFloor, ((EditText)findViewById(R.id.editText3rdFloor)).getText().toString());
 			}
 		});
 		// 4th floor
@@ -113,7 +115,7 @@ public class BillDetailsActivity extends AppCompatActivity
 			@Override
 			public void onClick(View view)
 			{
-				sendSms(PhoneOf4thFloor, ((EditText)findViewById(R.id.editText4thFloor)).getText().toString());
+				directlySendSms(PhoneOf4thFloor, ((EditText)findViewById(R.id.editText4thFloor)).getText().toString());
 			}
 		});
 		//endregion
@@ -132,12 +134,26 @@ public class BillDetailsActivity extends AppCompatActivity
 		startActivity(sms_intent);
 	}
 	
+	private void directlySendSms(final String phoneNum, String msg)
+	{
+		final String msgCopied = msg;
+		new AlertDialog.Builder(this)
+				.setTitle("Title")
+				.setMessage("Do you really want to whatever?")
+				.setIcon(android.R.drawable.ic_dialog_info)
+				.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						sendSms(phoneNum, msgCopied);
+					}})
+				.setNegativeButton(android.R.string.no, null).show();
+	}
+	
 	private void sendSms(String phoneNum, String msg)
 	{
 		// Validation:
 		if(!checkPermissions(new String[]{ Manifest.permission.SEND_SMS, Manifest.permission.READ_PHONE_STATE }))
 		{
-		    return;
+			return;
 		}
 		else if (TextUtils.isEmpty(msg))
 		{
@@ -159,7 +175,7 @@ public class BillDetailsActivity extends AppCompatActivity
 		smsManager.sendTextMessage(phoneNum, null, msg, null, null);
 	}
 	
-	private void sendSms2(String phoneNumber, String message)
+	private void directlySendSms2(String phoneNumber, String message)
 	{
 		PendingIntent pi = PendingIntent.getActivity(this, 0,
 				new Intent(this, BillDetailsActivity.class), 0);
@@ -167,7 +183,7 @@ public class BillDetailsActivity extends AppCompatActivity
 		sms.sendTextMessage(phoneNumber, null, message, pi, null);
 	}
 	
-	private void sendSms3(String phoneNumber, String message)
+	private void directlySendSms3(String phoneNumber, String message)
 	{
 		String SENT = "SMS_SENT";
 		String DELIVERED = "SMS_DELIVERED";
@@ -265,8 +281,6 @@ public class BillDetailsActivity extends AppCompatActivity
 		
 		waterBill = intentView.getIntExtra("waterBill", 0);
 		gasBillDoubleStove = intentView.getIntExtra("gasBill", 0);
-		
-		
 		
 		// calculations
 		totalRawChargeOf1stFloor= chargeOf1stFloor + electricityChargeOf1stFloorSubmeter;
