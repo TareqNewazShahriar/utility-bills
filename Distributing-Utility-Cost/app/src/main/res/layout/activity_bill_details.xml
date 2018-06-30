@@ -50,7 +50,7 @@
                         an:layout_width="match_parent"
                         an:layout_height="wrap_content"
                         an:layout_marginBottom="10dp"
-                        an:text="1st floor and sum-meter bill calculation-"
+                        an:text="1st floor and sub-meter bill calculation-"
                         an:textStyle="bold"/>
                 </TableRow>
 
