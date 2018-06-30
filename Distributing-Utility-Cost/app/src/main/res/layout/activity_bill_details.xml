@@ -19,7 +19,7 @@
             an:layout_gravity="center_vertical"
             an:textSize="11pt"
             an:textColor="#ffffff"
-            an:text="Detail Distributed Bill"/>
+            an:text="Distributed Bill"/>
     </LinearLayout>
 
     <ScrollView
@@ -35,66 +35,79 @@
             an:layout_marginTop="10dp"
             an:paddingBottom="20dp">
 
-            <LinearLayout
-                an:orientation="horizontal"
-                an:layout_width="match_parent"
-                an:layout_height="wrap_content">
+            <TableLayout an:id="@+id/borderPanel"
+                         an:layout_width="match_parent"
+                         an:layout_height="wrap_content"
+                         an:background="@drawable/border"
+                         an:orientation="vertical"
+                         an:padding="10dp">
+                <TableRow>
+                    <TextView an:layout_width="match_parent"
+                              an:layout_height="wrap_content"
+                              an:layout_marginBottom="10dp"
+                              an:textStyle="bold"
+                              an:text="1st floor and sum-meter bill calculation-"/>
+                </TableRow>
+                <TableRow an:orientation="horizontal"
+                          an:layout_width="match_parent"
+                          an:layout_height="wrap_content">
 
-                <TextView
-                    an:layout_marginRight="10dp"
-                    an:layout_width="wrap_content"
-                    an:layout_height="match_parent"
-                    an:text="Bill of 1st Meter"/>
+                    <TextView
+                        an:layout_marginRight="10dp"
+                        an:layout_width="wrap_content"
+                        an:layout_height="match_parent"
+                        an:text="Actual bill of 1st floor"/>
 
-                <TextView
-                    an:id="@+id/textViewBillOfFirstMeter"
-                    an:layout_width="wrap_content"
-                    an:layout_height="wrap_content"
-                    an:text="---"/>
-            </LinearLayout>
-            <LinearLayout
-                an:orientation="horizontal"
-                an:layout_marginTop="10dp"
-                an:layout_width="match_parent"
-                an:layout_height="wrap_content">
-
-                <TextView
-                    an:layout_width="wrap_content"
-                    an:layout_height="wrap_content"
-                    an:layout_marginRight="10dp"
-                    an:text="Bill of 2nd Meter"/>
-
-                <TextView
-                    an:id="@+id/textViewBillOfSecondMeter"
+                    <TextView
+                        an:id="@+id/textViewBillOfFirstMeter"
+                        an:layout_width="wrap_content"
+                        an:layout_height="wrap_content"
+                        an:text="{amount}"/>
+                </TableRow>
+                <TableRow
+                    an:orientation="horizontal"
+                    an:layout_marginTop="10dp"
                     an:layout_width="match_parent"
-                    an:layout_height="wrap_content"
-                    an:text="---"/>
-            </LinearLayout>
-            <LinearLayout
-                an:orientation="horizontal"
-                an:layout_marginTop="10dp"
-                an:layout_width="match_parent"
-                an:layout_height="wrap_content">
-                <TextView
-                    an:layout_marginRight="10dp"
-                    an:layout_width="wrap_content"
-                    an:layout_height="wrap_content"
-                    an:width="200dp"
-                    an:text="Total Raw Charge (without VAT, Demand charge etc)"/>
+                    an:layout_height="wrap_content">
 
-                <TextView
-                    an:id="@+id/textViewTotalCharge"
-                    an:layout_width="wrap_content"
-                    an:layout_height="wrap_content"
-                    an:text="---"/>
-            </LinearLayout>
+                    <TextView
+                        an:layout_width="wrap_content"
+                        an:layout_height="wrap_content"
+                        an:layout_marginRight="10dp"
+                        an:text="Sub-meter bill"/>
+
+                    <TextView
+                        an:id="@+id/textViewBillOfSecondMeter"
+                        an:layout_width="match_parent"
+                        an:layout_height="wrap_content"
+                        an:text="{amount}"/>
+                </TableRow>
+                <TableRow
+                    an:orientation="horizontal"
+                    an:layout_marginTop="10dp"
+                    an:layout_width="match_parent"
+                    an:layout_height="wrap_content">
+                    <TextView
+                        an:layout_marginRight="15dp"
+                        an:layout_width="wrap_content"
+                        an:layout_height="wrap_content"
+                        an:text="Total Raw Charge \n (without VAT, Demand charge etc)"/>
+
+                    <TextView
+                        an:id="@+id/textViewTotalCharge"
+                        an:layout_width="wrap_content"
+                        an:layout_height="wrap_content"
+                        an:text="{amount}"/>
+                </TableRow>
+            </TableLayout>
 
             <TextView
                 an:id="@+id/textView6"
-                an:layout_marginTop="30dp"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:text="২য় তলা"/>
+                an:textStyle="bold"
+                an:layout_marginTop="30dp"
+                an:text="1st Floor"/>
             <EditText
                 an:id="@+id/editText1stFloor"
                 an:layout_width="match_parent"
@@ -120,10 +133,11 @@
 
             <TextView
                 an:id="@+id/textView3"
-                an:layout_marginTop="20dp"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:text="৩য় তলা"/>
+                an:textStyle="bold"
+                an:layout_marginTop="20dp"
+                an:text="2nd Floor"/>
             <EditText
                 an:id="@+id/editText2ndFloor"
                 an:layout_width="match_parent"
@@ -150,10 +164,11 @@
 
             <TextView
                 an:id="@+id/textView4"
-                an:layout_marginTop="20dp"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:text="৪র্থ তলা"/>
+                an:textStyle="bold"
+                an:layout_marginTop="20dp"
+                an:text="3rd Floor"/>
             <EditText
                 an:id="@+id/editText3rdFloor"
                 an:layout_width="wrap_content"
@@ -179,10 +194,11 @@
 
             <TextView
                 an:id="@+id/textView5"
-                an:layout_marginTop="20dp"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:text="৫ম+১ম তলা"/>
+                an:textStyle="bold"
+                an:layout_marginTop="20dp"
+                an:text="4th (+ground) Floor"/>
             <EditText
                 an:id="@+id/editText4thFloor"
                 an:layout_width="match_parent"
