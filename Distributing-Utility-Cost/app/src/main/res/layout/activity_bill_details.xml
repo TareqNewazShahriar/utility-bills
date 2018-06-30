@@ -48,7 +48,8 @@
                         an:layout_width="match_parent"
                         an:layout_height="wrap_content"
                         an:layout_marginBottom="10dp"
-                        an:text="1st floor and sub-meter bill calculation-"
+                        an:layout_span="2"
+                        an:text="1st floor and sub-meter bill calculation"
                         an:textStyle="bold"/>
                 </TableRow>
                 <TableRow>
@@ -87,7 +88,7 @@
                         an:layout_width="wrap_content"
                         an:layout_height="wrap_content"
                         an:layout_marginRight="15dp"
-                        an:text="Total Raw Charge \n (without VAT, Demand charge etc)"/>
+                        an:text="Total Raw Charge \n(without VAT, \nDemand charge etc)"/>
 
                     <TextView
                         an:id="@+id/textViewTotalCharge"

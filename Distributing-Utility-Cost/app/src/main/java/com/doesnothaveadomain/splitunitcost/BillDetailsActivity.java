@@ -298,7 +298,7 @@ public class BillDetailsActivity extends AppCompatActivity
 		txtBillOfFirstMeter.setText(String.format(Locale.ENGLISH, "%.2f", chargeOf1stFloor)
 						+ " TK for Unit "
 						+ String.format(Locale.ENGLISH, "%.2f", unitsOf1stFloor - unitsOf1stFloorSubmeter)
-						+ ". Late: "
+						+ ".\nLate: "
 						+  String.format(Locale.ENGLISH, "%.2f", (chargeOf1stFloor+vatOfCharge1))
 						+ "tk",
 				TextView.BufferType.EDITABLE);
@@ -306,7 +306,7 @@ public class BillDetailsActivity extends AppCompatActivity
 		txtBillOfSecondMeter.setText(String.format(Locale.ENGLISH, "%.2f", electricityChargeOf1stFloorSubmeter)
 						+ " TK for Unit "
 						+  String.format(Locale.ENGLISH, "%.2f", unitsOf1stFloorSubmeter)
-						+ ". Late: "
+						+ ".\nLate: "
 						+ String.format(Locale.ENGLISH, "%.2f", electricityChargeOf1stFloorSubmeter+vatOfCharge2)
 						+ "tk",
 				TextView.BufferType.EDITABLE);
