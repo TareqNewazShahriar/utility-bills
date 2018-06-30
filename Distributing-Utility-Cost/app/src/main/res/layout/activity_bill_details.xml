@@ -43,9 +43,7 @@
                 an:background="@drawable/border"
                 an:orientation="vertical"
                 an:padding="10dp">
-
                 <TableRow>
-
                     <TextView
                         an:layout_width="match_parent"
                         an:layout_height="wrap_content"
@@ -53,18 +51,12 @@
                         an:text="1st floor and sub-meter bill calculation-"
                         an:textStyle="bold"/>
                 </TableRow>
-
-                <TableRow
-                    an:layout_width="match_parent"
-                    an:layout_height="wrap_content"
-                    an:orientation="horizontal">
-
+                <TableRow>
                     <TextView
                         an:layout_width="wrap_content"
                         an:layout_height="match_parent"
                         an:layout_marginRight="10dp"
                         an:text="Actual bill of 1st floor"/>
-
                     <TextView
                         an:id="@+id/textViewBillOfFirstMeter"
                         an:layout_width="wrap_content"
@@ -72,18 +64,12 @@
                         an:text="{amount}"/>
                 </TableRow>
 
-                <TableRow
-                    an:layout_width="match_parent"
-                    an:layout_height="wrap_content"
-                    an:layout_marginTop="10dp"
-                    an:orientation="horizontal">
-
+                <TableRow>
                     <TextView
                         an:layout_width="wrap_content"
                         an:layout_height="wrap_content"
                         an:layout_marginRight="10dp"
                         an:text="Sub-meter bill"/>
-
                     <TextView
                         an:id="@+id/textViewBillOfSecondMeter"
                         an:layout_width="match_parent"

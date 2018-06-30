@@ -138,7 +138,7 @@ public class BillDetailsActivity extends AppCompatActivity
 	{
 		final String msgCopied = msg;
 		new AlertDialog.Builder(this)
-				.setTitle("Title")
+				.setTitle("Confirmation")
 				.setMessage("Is the message okay? Sending?")
 				.setIcon(android.R.drawable.ic_dialog_info)
 				.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
