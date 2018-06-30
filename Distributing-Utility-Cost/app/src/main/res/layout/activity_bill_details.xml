@@ -2,10 +2,10 @@
 <LinearLayout
     xmlns:an="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    an:orientation="vertical"
     an:layout_width="match_parent"
     an:layout_height="match_parent"
     an:fitsSystemWindows="true"
+    an:orientation="vertical"
     tools:context="com.doesnothaveadomain.splitunitcost.BillDetailsActivity">
 
     <LinearLayout
@@ -13,13 +13,14 @@
         an:layout_height="60dp"
         an:background="@color/colorPrimary"
         an:paddingStart="10dp">
+
         <TextView
             an:layout_width="wrap_content"
             an:layout_height="wrap_content"
             an:layout_gravity="center_vertical"
-            an:textSize="11pt"
+            an:text="Distributed Bill"
             an:textColor="#ffffff"
-            an:text="Distributed Bill"/>
+            an:textSize="11pt"/>
     </LinearLayout>
 
     <ScrollView
@@ -27,35 +28,41 @@
         an:layout_height="wrap_content">
 
         <LinearLayout
-            an:orientation="vertical"
             an:layout_width="match_parent"
             an:layout_height="wrap_content"
-            an:layout_marginStart="10dp"
             an:layout_marginEnd="10dp"
+            an:layout_marginStart="10dp"
             an:layout_marginTop="10dp"
+            an:orientation="vertical"
             an:paddingBottom="20dp">
 
-            <TableLayout an:id="@+id/borderPanel"
-                         an:layout_width="match_parent"
-                         an:layout_height="wrap_content"
-                         an:background="@drawable/border"
-                         an:orientation="vertical"
-                         an:padding="10dp">
+            <TableLayout
+                an:id="@+id/borderPanel"
+                an:layout_width="match_parent"
+                an:layout_height="wrap_content"
+                an:background="@drawable/border"
+                an:orientation="vertical"
+                an:padding="10dp">
+
                 <TableRow>
-                    <TextView an:layout_width="match_parent"
-                              an:layout_height="wrap_content"
-                              an:layout_marginBottom="10dp"
-                              an:textStyle="bold"
-                              an:text="1st floor and sum-meter bill calculation-"/>
-                </TableRow>
-                <TableRow an:orientation="horizontal"
-                          an:layout_width="match_parent"
-                          an:layout_height="wrap_content">
 
                     <TextView
-                        an:layout_marginRight="10dp"
+                        an:layout_width="match_parent"
+                        an:layout_height="wrap_content"
+                        an:layout_marginBottom="10dp"
+                        an:text="1st floor and sum-meter bill calculation-"
+                        an:textStyle="bold"/>
+                </TableRow>
+
+                <TableRow
+                    an:layout_width="match_parent"
+                    an:layout_height="wrap_content"
+                    an:orientation="horizontal">
+
+                    <TextView
                         an:layout_width="wrap_content"
                         an:layout_height="match_parent"
+                        an:layout_marginRight="10dp"
                         an:text="Actual bill of 1st floor"/>
 
                     <TextView
@@ -64,11 +71,12 @@
                         an:layout_height="wrap_content"
                         an:text="{amount}"/>
                 </TableRow>
+
                 <TableRow
-                    an:orientation="horizontal"
-                    an:layout_marginTop="10dp"
                     an:layout_width="match_parent"
-                    an:layout_height="wrap_content">
+                    an:layout_height="wrap_content"
+                    an:layout_marginTop="10dp"
+                    an:orientation="horizontal">
 
                     <TextView
                         an:layout_width="wrap_content"
@@ -82,15 +90,17 @@
                         an:layout_height="wrap_content"
                         an:text="{amount}"/>
                 </TableRow>
+
                 <TableRow
-                    an:orientation="horizontal"
-                    an:layout_marginTop="10dp"
                     an:layout_width="match_parent"
-                    an:layout_height="wrap_content">
+                    an:layout_height="wrap_content"
+                    an:layout_marginTop="10dp"
+                    an:orientation="horizontal">
+
                     <TextView
-                        an:layout_marginRight="15dp"
                         an:layout_width="wrap_content"
                         an:layout_height="wrap_content"
+                        an:layout_marginRight="15dp"
                         an:text="Total Raw Charge \n (without VAT, Demand charge etc)"/>
 
                     <TextView
@@ -105,25 +115,29 @@
                 an:id="@+id/textView6"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:textStyle="bold"
                 an:layout_marginTop="30dp"
-                an:text="1st Floor"/>
+                an:text="1st Floor"
+                an:textStyle="bold"/>
+
             <EditText
                 an:id="@+id/editText1stFloor"
                 an:layout_width="match_parent"
                 an:layout_height="wrap_content"
                 an:ems="10"
                 an:inputType="textMultiLine"/>
+
             <LinearLayout
                 an:layout_width="match_parent"
                 an:layout_height="wrap_content"
                 an:gravity="end">
+
                 <Button
                     an:id="@+id/buttonSendMsgTo1stFloor"
                     an:layout_width="wrap_content"
                     an:layout_height="wrap_content"
                     an:layout_marginEnd="5dp"
                     an:text="Send Message"/>
+
                 <Button
                     an:id="@+id/buttonMsgTo1stFloor"
                     an:layout_width="wrap_content"
@@ -135,25 +149,29 @@
                 an:id="@+id/textView3"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:textStyle="bold"
                 an:layout_marginTop="20dp"
-                an:text="2nd Floor"/>
+                an:text="2nd Floor"
+                an:textStyle="bold"/>
+
             <EditText
                 an:id="@+id/editText2ndFloor"
                 an:layout_width="match_parent"
                 an:layout_height="wrap_content"
                 an:ems="10"
                 an:inputType="textMultiLine"/>
+
             <LinearLayout
                 an:layout_width="match_parent"
                 an:layout_height="wrap_content"
                 an:gravity="end">
+
                 <Button
                     an:id="@+id/buttonSendMsgTo2ndFloor"
                     an:layout_width="wrap_content"
                     an:layout_height="wrap_content"
                     an:layout_marginEnd="5dp"
                     an:text="Send Message"/>
+
                 <Button
                     an:id="@+id/buttonMsgTo2ndFloor"
                     an:layout_width="wrap_content"
@@ -166,25 +184,29 @@
                 an:id="@+id/textView4"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:textStyle="bold"
                 an:layout_marginTop="20dp"
-                an:text="3rd Floor"/>
+                an:text="3rd Floor"
+                an:textStyle="bold"/>
+
             <EditText
                 an:id="@+id/editText3rdFloor"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
                 an:ems="10"
                 an:inputType="textMultiLine"/>
+
             <LinearLayout
                 an:layout_width="match_parent"
                 an:layout_height="wrap_content"
                 an:gravity="end">
+
                 <Button
                     an:id="@+id/buttonSendMsgTo3rdFloor"
                     an:layout_width="wrap_content"
                     an:layout_height="wrap_content"
                     an:layout_marginEnd="5dp"
                     an:text="Send Message"/>
+
                 <Button
                     an:id="@+id/buttonMsgTo3rdFloor"
                     an:layout_width="wrap_content"
@@ -196,25 +218,29 @@
                 an:id="@+id/textView5"
                 an:layout_width="wrap_content"
                 an:layout_height="wrap_content"
-                an:textStyle="bold"
                 an:layout_marginTop="20dp"
-                an:text="4th (+ground) Floor"/>
+                an:text="4th (+ground) Floor"
+                an:textStyle="bold"/>
+
             <EditText
                 an:id="@+id/editText4thFloor"
                 an:layout_width="match_parent"
                 an:layout_height="wrap_content"
                 an:ems="10"
                 an:inputType="textMultiLine"/>
+
             <LinearLayout
                 an:layout_width="match_parent"
                 an:layout_height="wrap_content"
                 an:gravity="right">
+
                 <Button
                     an:id="@+id/buttonSendMsgTo4thFloor"
                     an:layout_width="wrap_content"
                     an:layout_height="wrap_content"
                     an:layout_marginEnd="5dp"
                     an:text="Send Message"/>
+
                 <Button
                     an:id="@+id/buttonMsgTo4thFloor"
                     an:layout_width="wrap_content"
