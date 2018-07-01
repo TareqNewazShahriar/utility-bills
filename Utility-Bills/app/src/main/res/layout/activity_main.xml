@@ -125,25 +125,23 @@
             an:id="@+id/textView9"
             an:layout_width="wrap_content"
             an:layout_height="wrap_content"
-            an:layout_marginEnd="32dp"
+            an:layout_marginEnd="20dp"
             an:layout_marginTop="92dp"
             an:maxWidth="160dp"
             an:text="Reading of the month before last"
             app:layout_constraintEnd_toStartOf="@+id/editTextSubmeterBillPrevInput"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             an:id="@+id/textView10"
             an:layout_width="wrap_content"
             an:layout_height="wrap_content"
-            an:layout_marginEnd="32dp"
+            an:layout_marginEnd="20dp"
             an:layout_marginTop="12dp"
             an:maxLines="2"
             an:maxWidth="160dp"
             an:text="Reading of Previous Month"
             app:layout_constraintEnd_toStartOf="@+id/editTextSubmeterUnitCurrentInput"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9"/>
 
         <TextView
