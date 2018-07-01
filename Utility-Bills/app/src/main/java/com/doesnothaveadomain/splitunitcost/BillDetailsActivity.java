@@ -349,7 +349,6 @@ public class BillDetailsActivity extends AppCompatActivity
 			);
 	}
 	
-	
 	private boolean checkPermissions(String[] permissions)
 	{
 		boolean granted = true;
