@@ -11,6 +11,6 @@ There's an special case which is included in the app - if water pump, stairs lig
 
 Input view | Output view
 --- | ---
-<img src='/Readme-Content/Screenshot_20180730-114345__01.jpg' height=400></img> | <img src='/Readme-Content/Screenshot_20180730-114409__01.jpg' height=400></img>
+<img src='/Readme-Content/input-view.jpg' height=400></img> | <img src='/Readme-Content/output-view.jpg' height=400></img>
 
 *-App icon designed by [zularizal](https://github.com/zularizal)*
