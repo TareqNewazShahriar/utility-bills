@@ -266,6 +266,7 @@ public class BillDetailsActivity extends AppCompatActivity
 				totalRawChargeOf1stFloor, vatOfCharge1, vatOfCharge2,
 				motorBillPerOwner, waterBillPerFloor, gasBillSingleStove;
 		int waterBill, gasBillDoubleStove;
+		boolean moveMotorBill;
 		
 		// get values
 		unitsOf1stFloor = intentView.getDoubleExtra("unitsOf1stFloor", 0);
@@ -281,6 +282,7 @@ public class BillDetailsActivity extends AppCompatActivity
 		
 		waterBill = intentView.getIntExtra("waterBill", 0);
 		gasBillDoubleStove = intentView.getIntExtra("gasBill", 0);
+		moveMotorBill = intentView.getBooleanExtra("Move3rdFloorMotorBillTo4th", false);
 		
 		// calculations
 		totalRawChargeOf1stFloor= chargeOf1stFloor + electricityChargeOf1stFloorSubmeter;
@@ -315,8 +317,8 @@ public class BillDetailsActivity extends AppCompatActivity
 		
 		SetDetailsBill(R.id.editText1stFloor, Math.ceil(electricityBillOf1stFloor-electricityChargeOf1stFloorSubmeter), Math.ceil(motorBillPerOwner), Math.ceil(waterBillPerFloor), gasBillDoubleStove);
 		SetDetailsBill(R.id.editText2ndFloor, electricityBillOf2ndFloor, (int)motorBillPerOwner, (int)waterBillPerFloor, gasBillDoubleStove);
-		SetDetailsBill(R.id.editText3rdFloor, electricityBillOf3rdFloor, (int)motorBillPerOwner, (int)waterBillPerFloor, gasBillDoubleStove);
-		SetDetailsBill(R.id.editText4thFloor, electricityBillOf4thFloor, (int)motorBillPerOwner, Math.floor(waterBillPerFloor*2), gasBillDoubleStove+(gasBillSingleStove*2));
+		SetDetailsBill(R.id.editText3rdFloor, electricityBillOf3rdFloor, (moveMotorBill ? 0 : (int)motorBillPerOwner), (int)waterBillPerFloor, gasBillDoubleStove);
+		SetDetailsBill(R.id.editText4thFloor, electricityBillOf4thFloor, (moveMotorBill ? ((int)motorBillPerOwner)*2 : (int)motorBillPerOwner), Math.floor(waterBillPerFloor*2), gasBillDoubleStove+(gasBillSingleStove*2));
 	}
 	
 	private void SetDetailsBill(int id, double electricityBill, double motorBill, double waterBill, double gasBill)
@@ -335,9 +337,9 @@ public class BillDetailsActivity extends AppCompatActivity
 				+ "Electricity - "
 				+ String.format(Locale.ENGLISH, "%.0f", electricityBill)
 				+ System.lineSeparator()
-				+ "Motor - "
-				+ String.format(Locale.ENGLISH, "%.0f", motorBill)
-				+ System.lineSeparator()
+				+ (motorBill > 0 ?
+					"Motor - " + String.format(Locale.ENGLISH, "%.0f", motorBill) + System.lineSeparator()
+					: "")
 				+ "Water - "
 				+ String.format(Locale.ENGLISH, "%.0f", waterBill)
 				+ System.lineSeparator()

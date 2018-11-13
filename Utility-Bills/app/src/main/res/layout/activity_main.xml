@@ -110,17 +110,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextWaterBillInput"/>
 
-        <Button
-            an:id="@+id/buttonCalculate"
-            an:layout_width="158dp"
-            an:layout_height="wrap_content"
-            an:layout_marginTop="32dp"
-            an:text="Calculate"
-            app:layout_constraintHorizontal_bias="0.442"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextGasInput"/>
-
         <TextView
             an:id="@+id/textView9"
             an:layout_width="wrap_content"
@@ -227,6 +216,40 @@
             an:inputType="number"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextSubmeterUnitCurrentInput"/>
+
+        <TextView
+            an:id="@+id/textView15"
+            an:layout_width="wrap_content"
+            an:layout_height="wrap_content"
+            an:layout_marginStart="16dp"
+            an:layout_marginTop="44dp"
+            an:text="Move 3rd floor motor bill to 4th floor?"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8"/>
+
+        <Switch
+            an:id="@+id/switchThirdFloorMotorBillTo4th"
+            an:layout_width="wrap_content"
+            an:layout_height="wrap_content"
+            an:layout_marginStart="8dp"
+            an:layout_marginTop="32dp"
+            an:layout_marginEnd="16dp"
+            an:checked="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textView15"
+            app:layout_constraintTop_toBottomOf="@+id/editTextGasInput"/>
+
+        <Button
+            an:id="@+id/buttonCalculate"
+            an:layout_width="match_parent"
+            an:layout_height="wrap_content"
+            an:layout_marginTop="40dp"
+            an:text="Calculate"
+            app:layout_constraintHorizontal_bias="0.442"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchThirdFloorMotorBillTo4th"/>
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

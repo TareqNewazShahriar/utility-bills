@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity
 		EditText txtElectricityBillOf4thFloor = findViewById(R.id.editTextElectricityBillOf4thFloor);
 		EditText txtWaterBillInput = findViewById(R.id.editTextWaterBillInput);
 		EditText txtGasInput = findViewById(R.id.editTextGasInput);
+		Switch switchMoveMotorBill  = findViewById(R.id.switchThirdFloorMotorBillTo4th);
 		
 		if(TextUtils.isEmpty(txtUnitsOf1stFloor.getText())
 				|| TextUtils.isEmpty(txtSubmeterUnitPrev.getText())
@@ -87,7 +89,17 @@ public class MainActivity extends AppCompatActivity
 		charge1 = calc(1, unitsOf1stFloor - submeterUnitsOf1stFloor, unitsOf1stFloor);
 		charge2 = calc(unitsOf1stFloor - submeterUnitsOf1stFloor + 1, unitsOf1stFloor, unitsOf1stFloor);
 		
-		sendToDetailsView(unitsOf1stFloor, submeterUnitsOf1stFloor, charge1, charge2, electricityBillOf1stFloor, electricityBillOf2ndFloor, electricityBillOf3rdFloor, electricityBillOf4thFloor, waterBill, doubleStoveGasBill);
+		sendToDetailsView(unitsOf1stFloor,
+				submeterUnitsOf1stFloor,
+				charge1,
+				charge2,
+				electricityBillOf1stFloor,
+				electricityBillOf2ndFloor,
+				electricityBillOf3rdFloor,
+				electricityBillOf4thFloor,
+				waterBill,
+				doubleStoveGasBill,
+				switchMoveMotorBill.isChecked());
 	}
 	
 	private void sendToDetailsView(double unitsOf1stFloor,
@@ -99,7 +111,8 @@ public class MainActivity extends AppCompatActivity
 	                               double electricityBillOf3rdFloor,
 	                               double electricityBillOf4thFloor,
 	                               int waterBill,
-	                               int gasBill)
+	                               int gasBill,
+	                               boolean moveMotorBill)
 	{
 		Intent intent = new Intent(this, BillDetailsActivity.class);
 		
@@ -115,6 +128,8 @@ public class MainActivity extends AppCompatActivity
 		
 		intent.putExtra("waterBill", waterBill);
 		intent.putExtra("gasBill", gasBill);
+		
+		intent.putExtra("Move3rdFloorMotorBillTo4th", moveMotorBill);
 		
 		startActivity(intent);
 	}
